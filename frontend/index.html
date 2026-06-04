@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HackForge AI – AI Hackathon Idea Generator</title>
+    <!-- Google Fonts for premium developer aesthetic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-decor-1"></div>
+    <div class="background-decor-2"></div>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo">
+                <span class="logo-icon">⚡</span>
+                <h1 class="logo-text">HackForge <span class="accent-text">AI</span></h1>
+            </div>
+            <p class="tagline">Forge judge-level, competitive hackathon project ideas in seconds powered by GenAI.</p>
+        </header>
+
+        <!-- Main Form Grid -->
+        <main class="main-content">
+            <section class="form-section">
+                <form id="idea-form" class="forge-form">
+                    <div class="form-group">
+                        <label for="domain">Hackathon Domain</label>
+                        <input type="text" id="domain" name="domain" placeholder="e.g. Fintech, Healthcare, Edtech, Sustainability..." required autocomplete="off">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="skill-level">Your Skill Level</label>
+                            <select id="skill-level" name="skill-level" required>
+                                <option value="Beginner">Beginner (CRUD & Basic APIs)</option>
+                                <option value="Intermediate" selected>Intermediate (AI + Cloud Integrations)</option>
+                                <option value="Advanced">Advanced (Complex Architectures)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="time-available">Time Available (Hours)</label>
+                            <input type="number" id="time-available" name="time-available" min="1" max="720" value="48" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="submit-btn" class="forge-btn">
+                        <span class="btn-text">Forge Hackathon Ideas</span>
+                        <span class="btn-glow"></span>
+                    </button>
+                </form>
+            </section>
+
+            <!-- Error Box -->
+            <div id="error-box" class="error-container hidden">
+                <div class="error-icon">⚠️</div>
+                <div class="error-details">
+                    <h3>Generation Failed</h3>
+                    <p id="error-message">Could not connect to the backend server. Please verify the backend is running.</p>
+                </div>
+            </div>
+
+            <!-- Loader & Skeleton State -->
+            <section id="loader" class="loader-container hidden">
+                <div class="spinner-box">
+                    <div class="pulse-spinner"></div>
+                    <p class="loading-text">Analyzing domain requirements... Calibrating difficulty... Simulating hackathon judge criteria...</p>
+                </div>
+                <div class="skeleton-grid">
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                </div>
+            </section>
+
+            <!-- Results Output Section -->
+            <section id="results" class="results-section hidden">
+                <!-- Highlighted Mentor Pick -->
+                <div class="mentor-pick-container">
+                    <div class="mentor-badge">
+                        <span class="badge-star">🏆</span>
+                        <span class="badge-title">Mentor's Top Pick</span>
+                    </div>
+                    <div class="mentor-reason-box">
+                        <h3>Why this idea ranks highest:</h3>
+                        <p id="ranking-reason"></p>
+                    </div>
+                </div>
+
+                <!-- Generated Cards Grid -->
+                <div id="ideas-grid" class="ideas-layout-grid">
+                    <!-- Cards injected dynamically via JS -->
+                </div>
+            </section>
+        </main>
+
+        <footer class="app-footer">
+            <p>HackForge AI MVP &bull; Developed for Hackathon & Internship Evaluation</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
