@@ -33,7 +33,11 @@ class IdeaRequest(BaseModel):
             raise ValueError("Domain must be a non-empty string")
         return stripped
 
-@app.get("/health")
+# Pydantic schema for health check
+class HealthResponse(BaseModel):
+    status: str
+
+@app.get("/health", response_model=HealthResponse)
 def health_check():
     """
     Health check endpoint to ensure server is running.
