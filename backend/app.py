@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field, field_validator
 from typing import Literal
-from llm_service import generate_ideas
+from llm_service import generate_ideas, HackathonIdeasResponse
 
 app = FastAPI(
     title="HackForge AI API",
@@ -40,7 +40,7 @@ def health_check():
     """
     return {"status": "ok"}
 
-@app.post("/generate-ideas")
+@app.post("/generate-ideas", response_model=HackathonIdeasResponse)
 def generate_hackathon_ideas(request: IdeaRequest):
     """
     Primary endpoint that accepts user constraints and returns exactly 3 ideas in JSON format.
