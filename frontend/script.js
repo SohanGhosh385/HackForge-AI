@@ -67,16 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Sync hours select dropdown to hacking hours input field
-    const hoursInput = document.getElementById('time-available');
-    const hoursSelect = document.getElementById('hours-select');
-    
-    if (hoursSelect && hoursInput) {
-        hoursSelect.addEventListener('change', () => {
-            hoursInput.value = hoursSelect.value;
-        });
-    }
-
     // Form submission API flow
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
