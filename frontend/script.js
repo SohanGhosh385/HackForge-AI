@@ -57,6 +57,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Sync domain select dropdown to domain input field
+    const domainInput = document.getElementById('domain');
+    const domainSelect = document.getElementById('domain-select');
+    
+    if (domainSelect && domainInput) {
+        domainSelect.addEventListener('change', () => {
+            domainInput.value = domainSelect.value;
+        });
+    }
+
     // Form submission API flow
     form.addEventListener('submit', async (e) => {
         e.preventDefault();

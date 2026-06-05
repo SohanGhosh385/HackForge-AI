@@ -89,7 +89,24 @@
                 <form id="idea-form" class="forge-form">
                     <div class="form-group">
                         <label for="domain">Hackathon Domain / Industry</label>
-                        <input type="text" id="domain" name="domain" placeholder="e.g. Fintech, Healthcare, Edtech, Sustainability..." required autocomplete="off">
+                        <div class="domain-input-row">
+                            <input type="text" id="domain" name="domain" placeholder="e.g. Fintech, Healthcare, Edtech, Sustainability..." required autocomplete="off">
+                            <select id="domain-select" class="domain-dropdown">
+                                <option value="" disabled selected>Quick Select</option>
+                                <option value="Fintech">Fintech</option>
+                                <option value="Healthcare">Healthcare</option>
+                                <option value="Edtech">Edtech</option>
+                                <option value="Sustainability">Sustainability</option>
+                                <option value="Artificial Intelligence">Artificial Intelligence</option>
+                                <option value="Cyber Security">Cyber Security</option>
+                                <option value="Web3 & Blockchain">Web3 & Blockchain</option>
+                                <option value="E-commerce">E-commerce</option>
+                                <option value="AgriTech">AgriTech</option>
+                                <option value="Smart Cities">Smart Cities</option>
+                                <option value="Gaming & Esports">Gaming & Esports</option>
+                                <option value="Logistics & Supply Chain">Logistics & Supply Chain</option>
+                            </select>
+                        </div>
                     </div>
                     
                     <div class="form-row">

@@ -424,6 +424,28 @@ body {
     gap: 8px;
 }
 
+.domain-input-row {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+}
+
+.domain-input-row input[type="text"] {
+    flex: 1.6;
+}
+
+.domain-dropdown {
+    flex: 1;
+    cursor: pointer;
+}
+
+@media (max-width: 580px) {
+    .domain-input-row {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
 .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
