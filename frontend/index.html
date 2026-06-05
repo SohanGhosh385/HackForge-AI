@@ -121,7 +121,18 @@
 
                         <div class="form-group">
                             <label for="time-available">Hacking Hours</label>
-                            <input type="number" id="time-available" name="time-available" min="1" max="720" value="48" required>
+                            <div class="hours-input-row">
+                                <input type="number" id="time-available" name="time-available" min="1" max="720" value="48" required>
+                                <select id="hours-select" class="hours-dropdown">
+                                    <option value="" disabled selected>Quick Select</option>
+                                    <option value="10">10 Hours</option>
+                                    <option value="15">15 Hours</option>
+                                    <option value="24">24 Hours</option>
+                                    <option value="36">36 Hours</option>
+                                    <option value="48">48 Hours</option>
+                                    <option value="72">72 Hours</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
 
