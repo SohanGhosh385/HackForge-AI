@@ -153,7 +153,7 @@ body {
 .nav-menu {
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: 16px;
     justify-self: center;
 }
 
@@ -164,11 +164,15 @@ body {
     font-size: 1.05rem;
     font-weight: 600;
     letter-spacing: 0.2px;
+    padding: 6px 12px;
+    border-radius: 50px;
+    background-color: transparent;
     transition: var(--transition-smooth);
 }
 
 .nav-link:hover {
-    color: var(--color-accent);
+    color: var(--color-text-main);
+    background-color: rgba(255, 255, 255, 0.07);
 }
 
 .nav-cta {
