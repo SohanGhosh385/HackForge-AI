@@ -138,7 +138,7 @@ body {
 }
 
 .logo-text {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     font-size: 1.35rem;
     font-weight: 700;
     color: var(--color-text-main);
@@ -158,7 +158,7 @@ body {
 }
 
 .nav-link {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     color: var(--color-text-muted);
     text-decoration: none;
     font-size: 1.05rem;
@@ -181,7 +181,7 @@ body {
     font-weight: 600;
     box-shadow: 0 4px 15px var(--color-primary-glow);
     transition: var(--transition-smooth);
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 .nav-cta:hover {
