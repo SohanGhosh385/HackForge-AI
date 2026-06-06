@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Navbar Hamburger menu
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
+    const navLinks = document.querySelectorAll('.nav-link, .nav-cta');
     
     // Modal Elements
     const detailsModal = document.getElementById('details-modal');
@@ -40,10 +40,14 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     // Navbar toggle trigger
+    const navbarEl = document.querySelector('.navbar');
     if (navToggle && navMenu) {
         navToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
             navToggle.classList.toggle('active');
+            if (navbarEl) {
+                navbarEl.classList.toggle('mobile-active');
+            }
         });
     }
 
@@ -53,6 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (navMenu.classList.contains('active')) {
                 navMenu.classList.remove('active');
                 navToggle.classList.remove('active');
+                if (navbarEl) {
+                    navbarEl.classList.remove('mobile-active');
+                }
             }
         });
     });
