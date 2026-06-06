@@ -172,15 +172,21 @@ body {
 }
 
 .nav-cta {
-    background: transparent;
+    background: linear-gradient(to right, var(--color-primary) 0%, hsl(265, 80%, 55%) 49%, transparent 51%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
     color: hsl(250, 85%, 75%);
     border: 1.5px solid hsl(250, 85%, 70%);
     text-decoration: none;
-    padding: 8px 24px;
+    padding: 8px 32px;
     border-radius: 50px;
     font-size: 0.95rem;
     font-weight: 600;
-    transition: var(--transition-smooth);
+    transition: background-position 0.5s cubic-bezier(0.25, 0.8, 0.25, 1),
+                color 0.4s ease,
+                border-color 0.4s ease,
+                box-shadow 0.5s ease,
+                transform 0.3s ease;
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     letter-spacing: 0.2px;
     display: inline-block;
@@ -188,7 +194,7 @@ body {
 
 .nav-cta:hover,
 .nav-cta:active {
-    background: linear-gradient(135deg, var(--color-primary) 0%, hsl(265, 80%, 55%) 100%);
+    background-position: 0% 0;
     color: white;
     border-color: transparent;
     box-shadow: 0 4px 15px var(--color-primary-glow);
