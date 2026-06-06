@@ -140,9 +140,9 @@ body {
 .logo-text {
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     font-size: 1.35rem;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--color-text-main);
-    letter-spacing: -0.5px;
+    letter-spacing: normal;
 }
 
 .accent-text {
