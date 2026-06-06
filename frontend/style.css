@@ -118,7 +118,7 @@ body {
 
 .nav-container {
     width: 100%;
-    padding: 8px 24px;
+    padding: 12px 24px;
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
@@ -173,7 +173,7 @@ body {
     background: linear-gradient(135deg, var(--color-primary) 0%, hsl(265, 80%, 55%) 100%);
     color: white;
     text-decoration: none;
-    padding: 7px 18px;
+    padding: 8px 20px;
     border-radius: 50px;
     font-size: 0.85rem;
     font-weight: 600;
