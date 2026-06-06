@@ -292,18 +292,18 @@ body {
 }
 
 .hero-title {
-    font-family: 'Outfit', sans-serif;
-    font-size: 4rem;
+    font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+    font-size: 4.2rem;
     font-weight: 800;
     line-height: 1.15;
-    letter-spacing: -2px;
+    letter-spacing: normal;
     margin-bottom: 24px;
 }
 
 @media (max-width: 768px) {
     .hero-title {
         font-size: 2.5rem;
-        letter-spacing: -1px;
+        line-height: 1.2;
     }
 }
 
