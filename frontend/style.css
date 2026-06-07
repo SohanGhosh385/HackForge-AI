@@ -292,10 +292,10 @@ body {
 }
 
 .hero-title {
-    font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
     font-size: 4.2rem;
     font-weight: 800;
-    line-height: 1.15;
+    line-height: 1.1;
     letter-spacing: normal;
     margin-bottom: 24px;
 }
