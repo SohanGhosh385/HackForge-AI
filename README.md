@@ -1,4 +1,3 @@
-<<<<<<< HEAD
                     ┌────────────────────────────┐
                     │        FRONTEND UI         │
                     │ (Static HTML / JS / UI)    │
@@ -41,7 +40,6 @@
                       │
                       ▼
                 FRONTEND DISPLAY
-=======
 # HackForge AI – AI Hackathon Idea Generator (MVP)
 
 HackForge AI is a lightweight, single-page GenAI-powered web application that generates tailored hackathon project ideas using LLMs. Designed as a clean, minimal MVP (Minimum Viable Product), it helps students or hackathon participants generate actionable ideas based on their domain of interest, skill level, and available hacking hours.
@@ -142,4 +140,3 @@ The `llm_service.py` defines the system instruction:
 
 ### 2. Run the Frontend
 * Open `frontend/index.html` directly in any web browser or use a simple static server (e.g., Live Server in VS Code).
->>>>>>> 2a20132 (Updated README with Project System and Logic Diagram)
