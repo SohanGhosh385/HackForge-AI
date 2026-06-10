@@ -506,8 +506,8 @@ body {
     flex-direction: column;
     overflow: hidden;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-    height: 270px;
-    min-height: 270px;
+    height: 310px;
+    min-height: 310px;
 }
 
 /* Sharp, custom gradient border using mask composite */
@@ -603,7 +603,7 @@ body {
 
 .feature-card h3 {
     font-family: 'Poppins', system-ui, -apple-system, sans-serif;
-    font-size: 1.55rem;
+    font-size: 1.75rem;
     font-weight: 700;
     color: var(--color-text-main);
     margin-bottom: 0;
@@ -613,7 +613,7 @@ body {
 .feature-card p {
     color: var(--color-text-muted);
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    font-size: 1.15rem;
+    font-size: 1.30rem;
     line-height: 1.7;
     transition: color 0.3s ease;
     position: relative;
