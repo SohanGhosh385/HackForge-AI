@@ -430,7 +430,7 @@ body {
 
 /* Features Grid Section */
 .features-section {
-    max-width: 1600px;
+    max-width: 1800px;
     margin: 0 auto;
     padding: 80px 24px;
 }
@@ -465,7 +465,7 @@ body {
 .features-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 24px;
 }
 
 @media (max-width: 992px) {
@@ -496,48 +496,19 @@ body {
     position: relative;
     background: radial-gradient(circle at 10% 10%, rgba(var(--card-accent-rgb), 0.08) 0%, rgba(0, 0, 0, 0) 60%), 
                 rgba(15, 18, 25, 0.45);
-    border: none; /* Removed default border, replaced with mask-gradient border */
+    border: 1.5px solid rgba(var(--card-accent-rgb), 0.5);
     border-radius: 28px;
     padding: 40px 36px;
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
                 box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-                background 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+                background 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
     overflow: hidden;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-    height: 310px;
-    min-height: 310px;
-}
-
-/* Sharp, custom gradient border using mask composite */
-.feature-card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 28px;
-    padding: 1.5px; /* Border thickness */
-    background: linear-gradient(135deg, rgba(var(--card-accent-rgb), 0.45) 0%, rgba(var(--card-accent-rgb), 0.15) 100%);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-    transition: background 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    z-index: 1;
-}
-
-.feature-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--card-accent) 0%, rgba(255, 255, 255, 0) 100%);
-    opacity: 0.8;
-    z-index: 2;
-    transition: opacity 0.3s ease, height 0.3s ease, background 0.3s ease;
+    height: 330px;
+    min-height: 330px;
 }
 
 .feature-card:hover {
@@ -546,16 +517,7 @@ body {
                 rgba(15, 18, 25, 0.55);
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 
                 0 0 25px rgba(var(--card-accent-rgb), 0.2);
-}
-
-.feature-card:hover::after {
-    background: linear-gradient(135deg, rgba(var(--card-accent-rgb), 0.8) 0%, rgba(var(--card-accent-rgb), 0.35) 100%);
-}
-
-.feature-card:hover::before {
-    opacity: 1;
-    height: 3px;
-    background: linear-gradient(90deg, var(--card-accent) 0%, rgba(var(--card-accent-rgb), 0.3) 70%, rgba(255, 255, 255, 0) 100%);
+    border-color: rgba(var(--card-accent-rgb), 0.95);
 }
 
 .card-header {
@@ -603,7 +565,7 @@ body {
 
 .feature-card h3 {
     font-family: 'Poppins', system-ui, -apple-system, sans-serif;
-    font-size: 1.75rem;
+    font-size: 2.1rem;
     font-weight: 700;
     color: var(--color-text-main);
     margin-bottom: 0;
@@ -613,8 +575,8 @@ body {
 .feature-card p {
     color: var(--color-text-muted);
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    font-size: 1.30rem;
-    line-height: 1.7;
+    font-size: 1.5rem;
+    line-height: 1.55;
     transition: color 0.3s ease;
     position: relative;
     z-index: 2;
