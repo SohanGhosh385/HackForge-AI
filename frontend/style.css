@@ -512,7 +512,7 @@ body {
     inset: 0;
     border-radius: 28px;
     padding: 1.5px; /* Border thickness */
-    background: linear-gradient(135deg, rgba(var(--card-accent-rgb), 0.35) 0%, rgba(255, 255, 255, 0.04) 50%, rgba(255, 255, 255, 0.01) 100%);
+    background: linear-gradient(135deg, rgba(var(--card-accent-rgb), 0.45) 0%, rgba(var(--card-accent-rgb), 0.15) 100%);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
@@ -544,7 +544,7 @@ body {
 }
 
 .feature-card:hover::after {
-    background: linear-gradient(135deg, rgba(var(--card-accent-rgb), 0.7) 0%, rgba(var(--card-accent-rgb), 0.2) 60%, rgba(255, 255, 255, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(var(--card-accent-rgb), 0.8) 0%, rgba(var(--card-accent-rgb), 0.35) 100%);
 }
 
 .feature-card:hover::before {
