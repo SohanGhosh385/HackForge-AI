@@ -492,17 +492,34 @@ body {
     position: relative;
     background: radial-gradient(circle at 10% 10%, rgba(var(--card-accent-rgb), 0.08) 0%, rgba(0, 0, 0, 0) 60%), 
                 rgba(15, 18, 25, 0.45);
-    border: 1px solid rgba(var(--card-accent-rgb), 0.15);
+    border: none; /* Removed default border, replaced with mask-gradient border */
     border-radius: 28px;
     padding: 54px 44px;
-    transition: var(--transition-smooth);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                background 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
     overflow: hidden;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
     min-height: 290px;
+}
+
+/* Sharp, custom gradient border using mask composite */
+.feature-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 28px;
+    padding: 1.5px; /* Border thickness */
+    background: linear-gradient(135deg, rgba(var(--card-accent-rgb), 0.35) 0%, rgba(255, 255, 255, 0.04) 50%, rgba(255, 255, 255, 0.01) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    transition: background 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1;
 }
 
 .feature-card::before {
@@ -514,13 +531,26 @@ body {
     height: 2px;
     background: linear-gradient(90deg, var(--card-accent) 0%, rgba(255, 255, 255, 0) 100%);
     opacity: 0.8;
+    z-index: 2;
+    transition: opacity 0.3s ease, height 0.3s ease, background 0.3s ease;
 }
 
 .feature-card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(var(--card-accent-rgb), 0.4);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 
-                0 0 15px rgba(var(--card-accent-rgb), 0.15);
+    transform: translateY(-8px) scale(1.01);
+    background: radial-gradient(circle at 20% 20%, rgba(var(--card-accent-rgb), 0.15) 0%, rgba(var(--card-accent-rgb), 0.02) 50%, rgba(0, 0, 0, 0) 80%), 
+                rgba(15, 18, 25, 0.55);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 
+                0 0 25px rgba(var(--card-accent-rgb), 0.2);
+}
+
+.feature-card:hover::after {
+    background: linear-gradient(135deg, rgba(var(--card-accent-rgb), 0.7) 0%, rgba(var(--card-accent-rgb), 0.2) 60%, rgba(255, 255, 255, 0.05) 100%);
+}
+
+.feature-card:hover::before {
+    opacity: 1;
+    height: 3px;
+    background: linear-gradient(90deg, var(--card-accent) 0%, rgba(var(--card-accent-rgb), 0.3) 70%, rgba(255, 255, 255, 0) 100%);
 }
 
 .card-header {
@@ -528,6 +558,8 @@ body {
     align-items: center;
     gap: 20px;
     margin-bottom: 28px;
+    position: relative;
+    z-index: 2;
 }
 
 .feat-icon {
@@ -540,10 +572,28 @@ body {
     border: 1.5px solid rgba(var(--card-accent-rgb), 0.4);
     background-color: rgba(var(--card-accent-rgb), 0.1);
     box-shadow: 0 0 12px rgba(var(--card-accent-rgb), 0.15);
-    font-size: 1.55rem;
-    line-height: 1;
     margin-bottom: 0;
     flex-shrink: 0;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.feature-card:hover .feat-icon {
+    animation: icon-float 2s ease-in-out infinite;
+    background-color: rgba(var(--card-accent-rgb), 0.2);
+    border-color: rgba(var(--card-accent-rgb), 0.7);
+    box-shadow: 0 0 16px rgba(var(--card-accent-rgb), 0.35);
+    transform: scale(1.05);
+}
+
+.feat-icon svg {
+    width: 24px;
+    height: 24px;
+    color: var(--card-accent);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.feature-card:hover .feat-icon svg {
+    transform: scale(1.1);
 }
 
 .feature-card h3 {
@@ -559,7 +609,20 @@ body {
     color: var(--color-text-muted);
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     font-size: 1.15rem;
-    line-height: 1.65;
+    line-height: 1.7;
+    transition: color 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.feature-card:hover p {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+@keyframes icon-float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+    100% { transform: translateY(0); }
 }
 
 /* Generator & Dashboard Sections */
