@@ -452,9 +452,13 @@ body {
 }
 
 .section-header p {
-    color: var(--color-text-muted);
-    font-size: 1.1rem;
-    max-width: 500px;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 1.35rem;
+    font-weight: 500;
+    color: hsl(220, 15%, 70%);
+    letter-spacing: 0.3px;
+    line-height: 1.75;
+    max-width: 600px;
     margin: 0 auto;
 }
 
