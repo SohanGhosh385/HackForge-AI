@@ -430,7 +430,7 @@ body {
 
 /* Features Grid Section */
 .features-section {
-    max-width: 1400px;
+    max-width: 1600px;
     margin: 0 auto;
     padding: 80px 24px;
 }
@@ -472,6 +472,10 @@ body {
     .features-grid {
         grid-template-columns: 1fr;
     }
+    .feature-card {
+        height: auto !important;
+        min-height: auto !important;
+    }
 }
 
 /* Card Specific Theme Colors (for top glowing line and icon border/glow) */
@@ -494,7 +498,7 @@ body {
                 rgba(15, 18, 25, 0.45);
     border: none; /* Removed default border, replaced with mask-gradient border */
     border-radius: 28px;
-    padding: 54px 44px;
+    padding: 40px 36px;
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
                 box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
                 background 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -502,7 +506,8 @@ body {
     flex-direction: column;
     overflow: hidden;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-    min-height: 290px;
+    height: 270px;
+    min-height: 270px;
 }
 
 /* Sharp, custom gradient border using mask composite */
