@@ -1,5 +1,12 @@
 /* CSS DESIGN SYSTEM: HACKFORGE AI LANDING PAGE */
 
+/* Custom property for animatable conic-gradient angle (rotating rim) */
+@property --rim-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
 :root {
     /* Color Palette */
     --color-bg: hsl(225, 25%, 6%);
@@ -494,30 +501,80 @@ body {
 
 .feature-card {
     position: relative;
-    background: radial-gradient(circle at 10% 10%, rgba(var(--card-accent-rgb), 0.08) 0%, rgba(0, 0, 0, 0) 60%), 
-                rgba(15, 18, 25, 0.45);
-    border: 1.5px solid rgba(var(--card-accent-rgb), 0.5);
+    background: transparent;
+    border: none;
     border-radius: 28px;
     padding: 40px 36px;
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
-                box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-                background 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-                border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+                box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow: visible;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
     height: 330px;
     min-height: 330px;
+    z-index: 0;
+    isolation: isolate;
+}
+
+/* Rotating rim — a conic-gradient whose angle sweeps around the border path */
+.feature-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 28px;
+    padding: 1.5px;
+    background: conic-gradient(
+        from var(--rim-angle),
+        rgba(var(--card-accent-rgb), 0.15) 0%,
+        rgba(var(--card-accent-rgb), 0.15) 25%,
+        var(--card-accent) 30%,
+        rgba(var(--card-accent-rgb), 0.15) 35%,
+        rgba(var(--card-accent-rgb), 0.15) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: rim-rotate 4s linear infinite;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Inner card fill — the solid background behind the content */
+.feature-card::after {
+    content: '';
+    position: absolute;
+    inset: 1.5px;
+    border-radius: 27px;
+    background: radial-gradient(circle at 10% 10%, rgba(var(--card-accent-rgb), 0.08) 0%, rgba(0, 0, 0, 0) 60%), 
+                rgba(15, 18, 25, 0.95);
+    z-index: -1;
+    transition: background 0.3s ease;
+    pointer-events: none;
 }
 
 .feature-card:hover {
     transform: translateY(-8px) scale(1.01);
-    background: radial-gradient(circle at 20% 20%, rgba(var(--card-accent-rgb), 0.15) 0%, rgba(var(--card-accent-rgb), 0.02) 50%, rgba(0, 0, 0, 0) 80%), 
-                rgba(15, 18, 25, 0.55);
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 
-                0 0 25px rgba(var(--card-accent-rgb), 0.2);
-    border-color: rgba(var(--card-accent-rgb), 0.95);
+                0 0 30px rgba(var(--card-accent-rgb), 0.15);
+}
+
+.feature-card:hover::before {
+    animation: rim-rotate 2.5s linear infinite;
+    background: conic-gradient(
+        from var(--rim-angle),
+        rgba(var(--card-accent-rgb), 0.25) 0%,
+        rgba(var(--card-accent-rgb), 0.25) 20%,
+        var(--card-accent) 25%,
+        rgba(var(--card-accent-rgb), 0.25) 30%,
+        rgba(var(--card-accent-rgb), 0.25) 100%
+    );
+}
+
+.feature-card:hover::after {
+    background: radial-gradient(circle at 20% 20%, rgba(var(--card-accent-rgb), 0.12) 0%, rgba(var(--card-accent-rgb), 0.02) 50%, rgba(0, 0, 0, 0) 80%), 
+                rgba(15, 18, 25, 0.95);
 }
 
 .card-header {
@@ -1354,4 +1411,10 @@ select:focus {
 @keyframes scale-up {
     from { opacity: 0; transform: scale(0.97); }
     to { opacity: 1; transform: scale(1); }
+}
+
+/* Rotating rim — animates the conic-gradient angle so the highlight traces the border path */
+@keyframes rim-rotate {
+    from { --rim-angle: 0deg; }
+    to { --rim-angle: 360deg; }
 }
