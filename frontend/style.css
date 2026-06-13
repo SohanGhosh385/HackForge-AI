@@ -1453,15 +1453,18 @@ select:focus {
 
 .smart-input-container input[type="text"] {
     width: 100%;
-    padding-right: 45px;
+    padding: 18px 22px;
+    padding-right: 50px;
+    font-size: 1.1rem;
+    border-radius: var(--border-radius-md);
 }
 
 .smart-input-container .search-icon {
     position: absolute;
-    right: 18px;
+    right: 22px;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     color: var(--color-text-dim);
     pointer-events: none;
 }
@@ -1482,9 +1485,9 @@ select:focus {
 }
 
 .suggestion-item {
-    padding: 12px 18px;
+    padding: 14px 22px;
     cursor: pointer;
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: var(--color-text-muted);
     transition: var(--transition-smooth);
 }
@@ -1498,17 +1501,17 @@ select:focus {
 .quick-pills-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 12px;
+    gap: 12px;
+    margin-top: 16px;
 }
 
 .quick-pill {
     background-color: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
     color: var(--color-text-muted);
-    padding: 6px 14px;
+    padding: 8px 18px;
     border-radius: 50px;
-    font-size: 0.8rem;
+    font-size: 0.95rem;
     font-weight: 500;
     cursor: pointer;
     transition: var(--transition-smooth);
