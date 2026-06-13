@@ -64,15 +64,41 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Sync domain select dropdown to domain input field
+    // Auto-suggest dropdown logic and quick select pills
     const domainInput = document.getElementById('domain');
-    const domainSelect = document.getElementById('domain-select');
+    const suggestionsBox = document.getElementById('suggestions-box');
+    const quickPills = document.querySelectorAll('.quick-pill');
     
-    if (domainSelect && domainInput) {
-        domainSelect.addEventListener('change', () => {
-            domainInput.value = domainSelect.value;
+    // Toggle suggestions box visibility
+    if (domainInput && suggestionsBox) {
+        domainInput.addEventListener('focus', () => {
+            suggestionsBox.classList.remove('hidden');
+        });
+        
+        // Hide with delay so clicks inside the dropdown register first
+        domainInput.addEventListener('blur', () => {
+            setTimeout(() => {
+                suggestionsBox.classList.add('hidden');
+            }, 200);
+        });
+
+        // Click suggestion item to populate input
+        suggestionsBox.addEventListener('click', (e) => {
+            const item = e.target.closest('.suggestion-item');
+            if (item) {
+                domainInput.value = item.textContent;
+            }
         });
     }
+
+    // Click quick pill to populate input
+    quickPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+            if (domainInput) {
+                domainInput.value = pill.getAttribute('data-value');
+            }
+        });
+    });
 
     // Form submission API flow
     form.addEventListener('submit', async (e) => {
@@ -90,8 +116,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 2. Read values
         const domainVal = document.getElementById('domain').value;
-        const skillLevelVal = document.getElementById('skill-level').value;
-        const timeAvailableVal = parseInt(document.getElementById('time-available').value, 10);
+        const skillLevelVal = document.querySelector('input[name="skill-level"]:checked').value;
+        const timeAvailableVal = parseInt(document.querySelector('input[name="time-available"]:checked').value, 10);
 
         const payload = {
             domain: domainVal,

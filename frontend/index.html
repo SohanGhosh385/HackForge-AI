@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=7.3">
+    <link rel="stylesheet" href="style.css?v=8.1">
 </head>
 <body>
     <!-- Abstract Background Ambient Glows -->
@@ -116,46 +116,91 @@
                 <form id="idea-form" class="forge-form">
                     <div class="form-group">
                         <label for="domain">Hackathon Domain / Industry</label>
-                        <div class="domain-input-row">
+                        <div class="smart-input-container">
                             <input type="text" id="domain" name="domain" placeholder="e.g. Fintech, Healthcare, Edtech, Sustainability..." required autocomplete="off">
-                            <select id="domain-select" class="domain-dropdown">
-                                <option value="" disabled selected>Quick Select</option>
-                                <option value="Fintech">Fintech</option>
-                                <option value="Healthcare">Healthcare</option>
-                                <option value="Edtech">Edtech</option>
-                                <option value="Sustainability">Sustainability</option>
-                                <option value="Artificial Intelligence">Artificial Intelligence</option>
-                                <option value="Cyber Security">Cyber Security</option>
-                                <option value="Web3 & Blockchain">Web3 & Blockchain</option>
-                                <option value="E-commerce">E-commerce</option>
-                                <option value="AgriTech">AgriTech</option>
-                                <option value="Smart Cities">Smart Cities</option>
-                                <option value="Gaming & Esports">Gaming & Esports</option>
-                                <option value="Logistics & Supply Chain">Logistics & Supply Chain</option>
-                            </select>
+                            <span class="search-icon">🔍</span>
+                            <div class="suggestions-dropdown hidden" id="suggestions-box">
+                                <div class="suggestion-item">Fintech</div>
+                                <div class="suggestion-item">Healthcare</div>
+                                <div class="suggestion-item">Edtech</div>
+                                <div class="suggestion-item">Sustainability</div>
+                                <div class="suggestion-item">Artificial Intelligence</div>
+                                <div class="suggestion-item">Cyber Security</div>
+                                <div class="suggestion-item">Web3 & Blockchain</div>
+                            </div>
+                        </div>
+                        <div class="quick-pills-container">
+                            <button type="button" class="quick-pill" data-value="Fintech">💳 Fintech</button>
+                            <button type="button" class="quick-pill" data-value="Healthcare">🏥 Healthcare</button>
+                            <button type="button" class="quick-pill" data-value="Artificial Intelligence">🤖 AI</button>
+                            <button type="button" class="quick-pill" data-value="Sustainability">🌱 Sustainability</button>
+                            <button type="button" class="quick-pill" data-value="Cyber Security">🛡️ Security</button>
                         </div>
                     </div>
                     
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="skill-level">Your Skill Level</label>
-                            <select id="skill-level" name="skill-level" required>
-                                <option value="Beginner">Beginner (CRUD & Simple APIs)</option>
-                                <option value="Intermediate" selected>Intermediate (AI + Cloud Integrations)</option>
-                                <option value="Advanced">Advanced (Complex Architectures)</option>
-                            </select>
+                    <div class="form-group">
+                        <label>Your Skill Level</label>
+                        <div class="skill-cards-grid">
+                            <label class="skill-card-label">
+                                <input type="radio" name="skill-level" value="Beginner" required>
+                                <div class="skill-card-inner">
+                                    <span class="card-icon">🌱</span>
+                                    <div class="card-meta">
+                                        <h4>Beginner</h4>
+                                        <p>CRUD & Simple APIs</p>
+                                    </div>
+                                </div>
+                            </label>
+                            <label class="skill-card-label">
+                                <input type="radio" name="skill-level" value="Intermediate" checked required>
+                                <div class="skill-card-inner">
+                                    <span class="card-icon">⚡</span>
+                                    <div class="card-meta">
+                                        <h4>Intermediate</h4>
+                                        <p>AI + Cloud Integrations</p>
+                                    </div>
+                                </div>
+                            </label>
+                            <label class="skill-card-label">
+                                <input type="radio" name="skill-level" value="Advanced" required>
+                                <div class="skill-card-inner">
+                                    <span class="card-icon">🔥</span>
+                                    <div class="card-meta">
+                                        <h4>Advanced</h4>
+                                        <p>Complex Systems</p>
+                                    </div>
+                                </div>
+                            </label>
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            <label for="time-available">Hacking Hours</label>
-                            <select id="time-available" name="time-available" required>
-                                <option value="10">10 Hours</option>
-                                <option value="15">15 Hours</option>
-                                <option value="24">24 Hours</option>
-                                <option value="36">36 Hours</option>
-                                <option value="48" selected>48 Hours</option>
-                                <option value="72">72 Hours</option>
-                            </select>
+                    <div class="form-group">
+                        <label>Hacking Hours</label>
+                        <div class="time-segments">
+                            <label class="time-segment-label">
+                                <input type="radio" name="time-available" value="10" required>
+                                <div class="time-segment-inner">10 Hours</div>
+                            </label>
+                            <label class="time-segment-label">
+                                <input type="radio" name="time-available" value="15" required>
+                                <div class="time-segment-inner">15 Hours</div>
+                            </label>
+                            <label class="time-segment-label">
+                                <input type="radio" name="time-available" value="24" required>
+                                <div class="time-segment-inner">24 Hours</div>
+                            </label>
+                            <label class="time-segment-label">
+                                <input type="radio" name="time-available" value="36" required>
+                                <div class="time-segment-inner">36 Hours</div>
+                            </label>
+                            <label class="time-segment-label">
+                                <input type="radio" name="time-available" value="48" checked required>
+                                <div class="time-segment-inner">48 Hours</div>
+                            </label>
+                            <label class="time-segment-label">
+                                <input type="radio" name="time-available" value="72" required>
+                                <div class="time-segment-inner">72 Hours</div>
+                            </label>
                         </div>
                     </div>
 
@@ -179,15 +224,35 @@
             <aside class="info-sidebar">
                 <div class="sidebar-block">
                     <h3>💡 How it Works</h3>
-                    <ul class="sidebar-list">
-                        <li><strong>Parameters:</strong> Set your target industry domain, team capabilities, and timeline limitations.</li>
-                        <li><strong>Inference:</strong> The prompt engine structures and forwards instructions using JSON schema mode.</li>
-                        <li><strong>Evaluation:</strong> Models grade and rank proposals based on judge wow-factors and timeline feasibility.</li>
-                    </ul>
+                    <div class="sidebar-stepper">
+                        <div class="stepper-step">
+                            <div class="step-num">1</div>
+                            <div class="step-content">
+                                <strong>Parameters</strong>
+                                <p>Set your target industry domain, team capabilities, and timeline limitations.</p>
+                            </div>
+                        </div>
+                        <div class="stepper-step">
+                            <div class="step-num">2</div>
+                            <div class="step-content">
+                                <strong>Inference</strong>
+                                <p>The prompt engine structures and forwards instructions using JSON schema mode.</p>
+                            </div>
+                        </div>
+                        <div class="stepper-step">
+                            <div class="step-num">3</div>
+                            <div class="step-content">
+                                <strong>Evaluation</strong>
+                                <p>Models grade and rank proposals based on judge wow-factors and timeline feasibility.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="sidebar-block">
+                <div class="sidebar-block evaluation-block">
                     <h3>⚙️ The Evaluation Rules</h3>
-                    <p>Ideas are filtered against standard hackathon scoring guides, targeting high-impact designs with clear, achievable roadmaps for the pitch deck.</p>
+                    <div class="evaluation-card">
+                        <p>Ideas are filtered against standard hackathon scoring guides, targeting high-impact designs with clear, achievable roadmaps for the pitch deck.</p>
+                    </div>
                 </div>
             </aside>
         </div>
@@ -228,9 +293,12 @@
 
     <!-- About Section -->
     <section id="about" class="about-section">
-        <div class="about-card">
+        <div class="section-header">
             <h2>About HackForge AI</h2>
-            <p>HackForge AI was built to demonstrate how structured prompt engineering can generate highly specialized project scaffolding. By enforcing type diversity and judging metrics directly in the LLM service layer, the application ensures developers spend less time brainstorming and more time shipping code.</p>
+            <p>Built to demonstrate how structured prompt engineering generates production-grade project scaffolding.</p>
+        </div>
+        <div class="about-card">
+            <p>By enforcing type diversity and judging metrics directly in the LLM service layer, the application ensures developers spend less time brainstorming and more time shipping code.</p>
         </div>
     </section>
 
