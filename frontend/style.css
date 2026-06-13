@@ -1471,20 +1471,46 @@ select:focus {
     pointer-events: none;
 }
 
-.smart-input-container .dropdown-arrow-icon {
+.smart-input-container .dropdown-arrow-btn {
     position: absolute;
-    right: 22px;
+    right: 18px;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 1.25rem;
-    color: var(--color-text-muted);
-    pointer-events: none;
-    transition: transform 0.3s ease, color 0.3s ease;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: hsla(175, 80%, 45%, 0.08);
+    border: 1.5px solid hsla(175, 80%, 45%, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    pointer-events: auto;
+    z-index: 5;
 }
 
-.smart-input-container input:focus ~ .dropdown-arrow-icon {
-    transform: translateY(-50%) rotate(180deg);
-    color: var(--color-accent);
+.smart-input-container .dropdown-arrow-btn .chevron-svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: var(--color-accent);
+    stroke-width: 3.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.3s ease;
+    transform: rotate(0deg);
+}
+
+.smart-input-container .dropdown-arrow-btn:hover,
+.smart-input-container .dropdown-arrow-btn.active {
+    background-color: hsla(175, 80%, 45%, 0.18);
+    border-color: var(--color-accent);
+    box-shadow: 0 0 12px var(--color-accent-glow);
+}
+
+.smart-input-container .dropdown-arrow-btn.active .chevron-svg {
+    transform: rotate(180deg);
 }
 
 .suggestions-dropdown {

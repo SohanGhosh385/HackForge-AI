@@ -69,26 +69,55 @@ document.addEventListener('DOMContentLoaded', () => {
     const suggestionsBox = document.getElementById('suggestions-box');
     const quickPills = document.querySelectorAll('.quick-pill');
     
-    // Toggle suggestions box visibility
+    // Toggle suggestions box visibility and dropdown arrow active state
+    const dropdownArrow = document.querySelector('.dropdown-arrow-btn');
+    
     if (domainInput && suggestionsBox) {
+        const toggleDropdown = (show) => {
+            if (show) {
+                suggestionsBox.classList.remove('hidden');
+                if (dropdownArrow) dropdownArrow.classList.add('active');
+            } else {
+                suggestionsBox.classList.add('hidden');
+                if (dropdownArrow) dropdownArrow.classList.remove('active');
+            }
+        };
+
         domainInput.addEventListener('focus', () => {
-            suggestionsBox.classList.remove('hidden');
+            toggleDropdown(true);
         });
         
         // Hide with delay so clicks inside the dropdown register first
         domainInput.addEventListener('blur', () => {
             setTimeout(() => {
-                suggestionsBox.classList.add('hidden');
+                toggleDropdown(false);
             }, 200);
         });
 
-        // Click suggestion item to populate input
-        suggestionsBox.addEventListener('click', (e) => {
+        // Click suggestion item to populate input (using mousedown to resolve focus blur race conditions)
+        suggestionsBox.addEventListener('mousedown', (e) => {
             const item = e.target.closest('.suggestion-item');
             if (item) {
-                domainInput.value = item.textContent;
+                domainInput.value = item.textContent.trim();
+                toggleDropdown(false);
+                e.preventDefault(); // Keep focus inside the input so user can edit if needed
             }
         });
+
+        // Toggle dropdown on arrow button click
+        if (dropdownArrow) {
+            dropdownArrow.addEventListener('mousedown', (e) => {
+                e.preventDefault(); // Prevents browser focus blur cycle
+                const isHidden = suggestionsBox.classList.contains('hidden');
+                if (isHidden) {
+                    domainInput.focus();
+                    toggleDropdown(true);
+                } else {
+                    toggleDropdown(false);
+                    domainInput.blur();
+                }
+            });
+        }
     }
 
     // Click quick pill to populate input
