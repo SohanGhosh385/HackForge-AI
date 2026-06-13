@@ -526,11 +526,11 @@ body {
     padding: 1.5px;
     background: conic-gradient(
         from var(--rim-angle),
-        rgba(var(--card-accent-rgb), 0.15) 0%,
-        rgba(var(--card-accent-rgb), 0.15) 25%,
+        rgba(var(--card-accent-rgb), 0.08) 0%,
+        rgba(var(--card-accent-rgb), 0.08) 25%,
         var(--card-accent) 30%,
-        rgba(var(--card-accent-rgb), 0.15) 35%,
-        rgba(var(--card-accent-rgb), 0.15) 100%
+        rgba(var(--card-accent-rgb), 0.08) 35%,
+        rgba(var(--card-accent-rgb), 0.08) 100%
     );
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -564,11 +564,11 @@ body {
     animation: rim-rotate 2.5s linear infinite;
     background: conic-gradient(
         from var(--rim-angle),
-        rgba(var(--card-accent-rgb), 0.25) 0%,
-        rgba(var(--card-accent-rgb), 0.25) 20%,
+        rgba(var(--card-accent-rgb), 0.12) 0%,
+        rgba(var(--card-accent-rgb), 0.12) 20%,
         var(--card-accent) 25%,
-        rgba(var(--card-accent-rgb), 0.25) 30%,
-        rgba(var(--card-accent-rgb), 0.25) 100%
+        rgba(var(--card-accent-rgb), 0.12) 30%,
+        rgba(var(--card-accent-rgb), 0.12) 100%
     );
 }
 
