@@ -449,10 +449,10 @@ body {
 
 .section-header h2 {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    font-size: 2.8rem;
+    font-size: 4.2rem;
     font-weight: 800;
     margin-bottom: 18px;
-    letter-spacing: -1px;
+    letter-spacing: -2px;
     line-height: 1.1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -460,7 +460,8 @@ body {
 
 @media (max-width: 992px) {
     .section-header h2 {
-        font-size: 2rem;
+        font-size: 2.8rem;
+        letter-spacing: -1px;
     }
 }
 
