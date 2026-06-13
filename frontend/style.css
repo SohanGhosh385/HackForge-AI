@@ -547,17 +547,17 @@ body {
     position: absolute;
     inset: 1.5px;
     border-radius: 27px;
-    background: radial-gradient(circle at 10% 10%, rgba(var(--card-accent-rgb), 0.08) 0%, rgba(0, 0, 0, 0) 60%), 
+    background: radial-gradient(circle at 10% 10%, rgba(var(--card-accent-rgb), 0.12) 0%, rgba(0, 0, 0, 0) 70%), 
                 rgba(15, 18, 25, 0.95);
     z-index: -1;
-    transition: background 0.3s ease;
+    transition: background 0.4s ease;
     pointer-events: none;
 }
 
 .feature-card:hover {
     transform: translateY(-8px) scale(1.01);
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 
-                0 0 30px rgba(var(--card-accent-rgb), 0.15);
+                0 0 40px rgba(var(--card-accent-rgb), 0.25);
 }
 
 .feature-card:hover::before {
@@ -573,8 +573,8 @@ body {
 }
 
 .feature-card:hover::after {
-    background: radial-gradient(circle at 20% 20%, rgba(var(--card-accent-rgb), 0.12) 0%, rgba(var(--card-accent-rgb), 0.02) 50%, rgba(0, 0, 0, 0) 80%), 
-                rgba(15, 18, 25, 0.95);
+    background: radial-gradient(circle at 15% 15%, rgba(var(--card-accent-rgb), 0.22) 0%, rgba(var(--card-accent-rgb), 0.08) 45%, rgba(var(--card-accent-rgb), 0.03) 80%, rgba(0, 0, 0, 0) 100%), 
+                rgba(15, 18, 25, 0.93);
 }
 
 .card-header {
