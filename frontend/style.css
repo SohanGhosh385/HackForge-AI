@@ -656,6 +656,47 @@ body {
     padding: 80px 24px;
 }
 
+.generator-section .section-header {
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.generator-section .section-header h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    font-size: 4.2rem;
+    width: 100%;
+}
+
+.generator-section .section-header h2::before,
+.generator-section .section-header h2::after {
+    content: '';
+    display: block;
+    height: 1px;
+    flex-grow: 1;
+    background: linear-gradient(90deg, transparent, hsla(175, 80%, 45%, 0.4), transparent);
+    max-width: 300px;
+}
+
+.generator-section .section-header p {
+    max-width: 800px;
+}
+
+@media (max-width: 992px) {
+    .generator-section .section-header h2 {
+        font-size: 2.8rem;
+    }
+    .generator-section .section-header h2::before,
+    .generator-section .section-header h2::after {
+        display: none;
+    }
+}
+
 .dashboard-grid {
     display: grid;
     grid-template-columns: 1.7fr 1fr;
