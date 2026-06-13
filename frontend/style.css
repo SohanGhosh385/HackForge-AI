@@ -299,7 +299,7 @@ body {
 }
 
 .hero-title {
-    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     font-size: 4.8rem;
     font-weight: 800;
     line-height: 1.1;
@@ -448,7 +448,7 @@ body {
 }
 
 .section-header h2 {
-    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     font-size: 4.8rem;
     font-weight: 800;
     margin-bottom: 18px;
