@@ -796,11 +796,12 @@ select:focus {
     background: linear-gradient(135deg, var(--color-primary) 0%, hsl(265, 80%, 55%) 100%);
     border: none;
     border-radius: var(--border-radius-md);
-    padding: 16px 24px;
+    padding: 18px 30px;
     color: white;
     font-family: 'Inter', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
     cursor: pointer;
     position: relative;
     overflow: hidden;
@@ -1454,19 +1455,36 @@ select:focus {
 .smart-input-container input[type="text"] {
     width: 100%;
     padding: 18px 22px;
-    padding-right: 50px;
+    padding-left: 52px;
+    padding-right: 52px;
     font-size: 1.1rem;
     border-radius: var(--border-radius-md);
 }
 
 .smart-input-container .search-icon {
     position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: var(--color-text-dim);
+    pointer-events: none;
+}
+
+.smart-input-container .dropdown-arrow-icon {
+    position: absolute;
     right: 22px;
     top: 50%;
     transform: translateY(-50%);
     font-size: 1.25rem;
-    color: var(--color-text-dim);
+    color: var(--color-text-muted);
     pointer-events: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.smart-input-container input:focus ~ .dropdown-arrow-icon {
+    transform: translateY(-50%) rotate(180deg);
+    color: var(--color-accent);
 }
 
 .suggestions-dropdown {
@@ -1501,20 +1519,26 @@ select:focus {
 .quick-pills-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 16px;
     margin-top: 16px;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .quick-pill {
     background-color: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
     color: var(--color-text-muted);
-    padding: 8px 18px;
+    padding: 10px 20px;
     border-radius: 50px;
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
     transition: var(--transition-smooth);
+    flex: 1;
+    text-align: center;
+    white-space: nowrap;
+    min-width: 120px;
 }
 
 .quick-pill:hover {
