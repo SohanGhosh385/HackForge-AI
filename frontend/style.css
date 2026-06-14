@@ -872,8 +872,8 @@ select:focus {
 
 /* Submit Button */
 .forge-btn {
-    background: linear-gradient(135deg, var(--color-primary) 0%, hsl(265, 80%, 55%) 100%);
-    border: none;
+    background: linear-gradient(135deg, hsl(185, 80%, 35%) 0%, var(--color-accent) 100%);
+    border: 1px solid rgba(20, 184, 166, 0.3);
     border-radius: var(--border-radius-md);
     padding: 18px 30px;
     color: white;
@@ -885,12 +885,13 @@ select:focus {
     position: relative;
     overflow: hidden;
     transition: var(--transition-smooth);
-    box-shadow: 0 4px 20px var(--color-primary-glow);
+    box-shadow: 0 4px 20px rgba(20, 184, 166, 0.25);
 }
 
 .forge-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 25px var(--color-primary-glow);
+    box-shadow: 0 6px 25px rgba(20, 184, 166, 0.4);
+    background: linear-gradient(135deg, hsl(185, 90%, 40%) 0%, hsl(175, 95%, 50%) 100%);
 }
 
 .forge-btn:disabled {
