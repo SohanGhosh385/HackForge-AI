@@ -1601,6 +1601,25 @@ select:focus {
     max-height: 250px;
     overflow-y: auto;
     animation: slide-up 0.2s ease-out;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-accent) transparent;
+}
+
+.suggestions-dropdown::-webkit-scrollbar {
+    width: 6px;
+}
+
+.suggestions-dropdown::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.suggestions-dropdown::-webkit-scrollbar-thumb {
+    background: var(--color-accent);
+    border-radius: var(--border-radius-sm);
+}
+
+.suggestions-dropdown::-webkit-scrollbar-thumb:hover {
+    background: hsl(175, 95%, 50%);
 }
 
 .suggestion-item {
