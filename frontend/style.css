@@ -1534,20 +1534,9 @@ select:focus {
 .smart-input-container input[type="text"] {
     width: 100%;
     padding: 18px 22px;
-    padding-left: 52px;
     padding-right: 52px;
     font-size: 1.1rem;
     border-radius: var(--border-radius-md);
-}
-
-.smart-input-container .search-icon {
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.2rem;
-    color: var(--color-text-dim);
-    pointer-events: none;
 }
 
 .smart-input-container .dropdown-arrow-btn {
