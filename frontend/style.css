@@ -703,13 +703,76 @@ body {
 }
 
 .generator-card {
-    background-color: var(--color-surface);
-    border: 2px solid var(--color-accent);
+    position: relative;
+    background: transparent;
+    border: none;
     border-radius: var(--border-radius-lg);
     padding: 36px;
-    box-shadow: 0 4px 20px 0 var(--color-accent-glow), 0 12px 40px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
+    z-index: 0;
+    isolation: isolate;
+    transition: box-shadow 0.4s ease;
+}
+
+/* Rotating rim — conic-gradient sweeping around the generator card border */
+.generator-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--border-radius-lg);
+    padding: 2px;
+    background: conic-gradient(
+        from var(--rim-angle),
+        rgba(20, 184, 166, 0.06) 0%,
+        rgba(20, 184, 166, 0.06) 25%,
+        hsl(175, 80%, 45%) 30%,
+        rgba(20, 184, 166, 0.06) 35%,
+        rgba(20, 184, 166, 0.06) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: rim-rotate 6s linear infinite;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Inner card fill — solid dark surface behind the content */
+.generator-card::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    border-radius: calc(var(--border-radius-lg) - 1px);
+    background: radial-gradient(circle at 5% 5%, rgba(20, 184, 166, 0.08) 0%, rgba(20, 184, 166, 0.02) 40%, rgba(0, 0, 0, 0) 70%),
+                hsla(225, 20%, 12%, 0.95);
+    z-index: -1;
+    pointer-events: none;
+    transition: background 0.4s ease;
+}
+
+.generator-card:hover {
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4),
+                0 0 15px rgba(20, 184, 166, 0.08);
+}
+
+.generator-card:hover::before {
+    animation: rim-rotate 3.5s linear infinite;
+    background: conic-gradient(
+        from var(--rim-angle),
+        rgba(20, 184, 166, 0.1) 0%,
+        rgba(20, 184, 166, 0.1) 20%,
+        hsl(175, 80%, 50%) 25%,
+        rgba(20, 184, 166, 0.1) 30%,
+        rgba(20, 184, 166, 0.1) 100%
+    );
+}
+
+.generator-card:hover::after {
+    background: radial-gradient(circle at 8% 8%, rgba(20, 184, 166, 0.14) 0%, rgba(20, 184, 166, 0.04) 40%, rgba(0, 0, 0, 0) 70%),
+                hsla(225, 20%, 12%, 0.93);
 }
 
 .forge-form {
