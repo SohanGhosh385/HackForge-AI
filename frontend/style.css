@@ -966,9 +966,9 @@ select:focus {
 }
 
 .sidebar-block p {
-    font-size: 1.05rem;
+    font-size: 1.25rem;
     color: var(--color-text-muted);
-    line-height: 1.7;
+    line-height: 1.8;
 }
 
 /* Error Container */
@@ -1879,22 +1879,22 @@ select:focus {
 .sidebar-stepper::before {
     content: '';
     position: absolute;
-    left: 20px;
-    top: 15px;
-    bottom: 15px;
+    left: 25px;
+    top: 20px;
+    bottom: 20px;
     width: 2px;
     background-color: rgba(255, 255, 255, 0.06);
     z-index: 0;
 }
 
 .step-num {
-    width: 26px;
-    height: 26px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     background-color: hsl(225, 25%, 6%);
     border: 2px solid rgba(255, 255, 255, 0.15);
     color: var(--color-text-muted);
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: 700;
     display: flex;
     align-items: center;
@@ -1911,16 +1911,16 @@ select:focus {
 }
 
 .step-content strong {
-    font-size: 1.15rem;
+    font-size: 1.3rem;
     color: var(--color-text-main);
     display: block;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
 }
 
 .step-content p {
-    font-size: 0.95rem;
+    font-size: 1.15rem;
     color: var(--color-text-muted);
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 .evaluation-block {
