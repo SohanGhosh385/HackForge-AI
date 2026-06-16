@@ -914,6 +914,35 @@ select:focus {
     padding: 28px;
 }
 
+/* Align right sidebar height to main left card on desktop */
+@media (min-width: 993px) {
+    .info-sidebar {
+        height: 100%;
+    }
+    
+    .info-sidebar > .sidebar-block {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .info-sidebar > .sidebar-block.evaluation-block {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .info-sidebar > .sidebar-block.evaluation-block .evaluation-card {
+        flex: 1;
+        display: flex;
+        align-items: center;
+    }
+    
+    .sidebar-stepper {
+        flex: 1;
+        justify-content: space-between;
+    }
+}
+
 .sidebar-block h3 {
     font-family: 'Inter', sans-serif;
     font-size: 1.15rem;
