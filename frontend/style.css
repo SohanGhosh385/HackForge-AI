@@ -967,6 +967,25 @@ select:focus {
                 0 0 15px rgba(20, 184, 166, 0.08);
 }
 
+.sidebar-block:not(.evaluation-block):hover::before,
+.evaluation-card:hover::before {
+    animation: rim-rotate 3.5s linear infinite;
+    background: conic-gradient(
+        from var(--rim-angle),
+        rgba(20, 184, 166, 0.1) 0%,
+        rgba(20, 184, 166, 0.1) 20%,
+        hsl(175, 80%, 50%) 25%,
+        rgba(20, 184, 166, 0.1) 30%,
+        rgba(20, 184, 166, 0.1) 100%
+    );
+}
+
+.sidebar-block:not(.evaluation-block):hover::after,
+.evaluation-card:hover::after {
+    background: radial-gradient(circle at 8% 8%, rgba(20, 184, 166, 0.14) 0%, rgba(20, 184, 166, 0.04) 40%, rgba(0, 0, 0, 0) 70%),
+                hsla(225, 20%, 12%, 0.93);
+}
+
 /* Align right sidebar height to main left card on desktop */
 @media (min-width: 993px) {
     .info-sidebar {
