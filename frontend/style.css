@@ -944,11 +944,12 @@ select:focus {
 }
 
 .sidebar-block h3 {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.15rem;
-    font-weight: 600;
-    margin-bottom: 16px;
+    font-family: 'Outfit', 'Inter', sans-serif;
+    font-size: 1.45rem;
+    font-weight: 700;
+    margin-bottom: 20px;
     color: var(--color-accent);
+    letter-spacing: 0.3px;
 }
 
 .sidebar-list {
@@ -959,15 +960,15 @@ select:focus {
 }
 
 .sidebar-list li {
-    font-size: 0.9rem;
+    font-size: 1.05rem;
     color: var(--color-text-muted);
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 .sidebar-block p {
-    font-size: 0.9rem;
+    font-size: 1.05rem;
     color: var(--color-text-muted);
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 /* Error Container */
@@ -1910,16 +1911,16 @@ select:focus {
 }
 
 .step-content strong {
-    font-size: 0.95rem;
+    font-size: 1.15rem;
     color: var(--color-text-main);
     display: block;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
 }
 
 .step-content p {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     color: var(--color-text-muted);
-    line-height: 1.4;
+    line-height: 1.5;
 }
 
 .evaluation-block {
