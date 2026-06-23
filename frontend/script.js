@@ -219,6 +219,78 @@ document.addEventListener('DOMContentLoaded', () => {
         return 'sys'; // systems, devops, scripts, default
     }
 
+    // Helper to return clean vector icons based on technology name
+    function getTechIconSvg(tech) {
+        const lower = tech.toLowerCase();
+        
+        // 1. AI & LLMs (Sparkles / Star)
+        if (lower.includes('gemini') || lower.includes('openai') || lower.includes('anthropic') || 
+            lower.includes('llm') || lower.includes('langchain') || lower.includes('hugging') || 
+            lower.includes('ai') || lower.includes('ml') || lower.includes('llama') || lower.includes('claude')) {
+            return `
+                <svg class="pill-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+                </svg>
+            `;
+        }
+        
+        // 2. FastAPI, backend frameworks (Lightning bolt for speed/performance)
+        if (lower.includes('fastapi') || lower.includes('python') || lower.includes('flask') || 
+            lower.includes('django') || lower.includes('express') || lower.includes('node')) {
+            return `
+                <svg class="pill-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+            `;
+        }
+        
+        // 3. Frontend frameworks & Libraries (Monitor/Screen for UI/Web layout)
+        if (lower.includes('react') || lower.includes('next') || lower.includes('vue') || 
+            lower.includes('svelte') || lower.includes('tailwind') || lower.includes('bootstrap') || 
+            lower.includes('html') || lower.includes('css') || lower.includes('javascript') || lower.includes('typescript')) {
+            return `
+                <svg class="pill-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+            `;
+        }
+        
+        // 4. Data frameworks (Pandas, NumPy, Scikit - analytics grid/bars)
+        if (lower.includes('pandas') || lower.includes('numpy') || lower.includes('scikit') || 
+            lower.includes('tensor') || lower.includes('torch') || lower.includes('data') || lower.includes('plot')) {
+            return `
+                <svg class="pill-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+            `;
+        }
+        
+        // 5. Databases & Storage (Cylinder)
+        if (lower.includes('postgres') || lower.includes('mongo') || lower.includes('sql') || 
+            lower.includes('pinecone') || lower.includes('chroma') || lower.includes('db') || 
+            lower.includes('redis') || lower.includes('supabase') || lower.includes('firebase')) {
+            return `
+                <svg class="pill-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                    <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"></path>
+                </svg>
+            `;
+        }
+        
+        // 6. Default Fallback (Code brackets </>)
+        return `
+            <svg class="pill-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+        `;
+    }
+
     // Populate and render results section
     function renderResults(data) {
         let cardsHTML = '';
@@ -238,7 +310,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const cardType = ideaTypeLabels[index] || "Project Idea";
 
             const techPills = idea.tech_stack.map(tech => `
-                <span class="tech-tag tech-${getTechCategory(tech)}">${escapeHtml(tech)}</span>
+                <span class="tech-tag tech-${getTechCategory(tech)}">
+                    ${getTechIconSvg(tech)}
+                    <span>${escapeHtml(tech)}</span>
+                </span>
             `).join('');
 
             cardsHTML += `
@@ -316,9 +391,11 @@ document.addEventListener('DOMContentLoaded', () => {
         modalDesc.textContent = idea.description;
         modalType.textContent = cardType;
         
-        // Dynamic tech tags with categorized colors
         modalTechList.innerHTML = idea.tech_stack.map(tech => `
-            <span class="tech-tag tech-${getTechCategory(tech)}">${escapeHtml(tech)}</span>
+            <span class="tech-tag tech-${getTechCategory(tech)}">
+                ${getTechIconSvg(tech)}
+                <span>${escapeHtml(tech)}</span>
+            </span>
         `).join('');
 
         // Full roadmap list mapping with interactive checklist inputs
