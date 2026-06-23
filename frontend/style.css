@@ -1200,11 +1200,12 @@ select:focus {
     background-color: transparent;
     border: none;
     border-radius: var(--border-radius-lg);
-    padding: 30px;
+    padding: 34px 30px;
     display: flex;
     flex-direction: column;
     position: relative;
     cursor: pointer;
+    min-height: 300px;
     transition: var(--transition-smooth);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
