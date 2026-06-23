@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=10.8">
+    <link rel="stylesheet" href="style.css?v=10.9">
 </head>
 <body>
     <!-- Abstract Background Ambient Glows -->
@@ -361,7 +361,16 @@
         <div class="modal-card">
             <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
             <div class="modal-header">
-                <span class="modal-type-badge" id="modal-idea-type">AI-Centric Solution</span>
+                <div class="modal-header-top">
+                    <span class="modal-type-badge" id="modal-idea-type">AI-Centric Solution</span>
+                    <button id="modal-copy-btn" class="btn-copy">
+                        <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        <span class="copy-btn-text">Copy Markdown</span>
+                    </button>
+                </div>
                 <h2 id="modal-idea-title">Project Title Placeholder</h2>
                 <p id="modal-idea-desc">Project description placeholder text...</p>
             </div>
@@ -398,10 +407,21 @@
                 </div>
 
                 <div class="modal-column">
-                    <h3>📋 Demo Roadmap Checklist</h3>
-                    <ol class="modal-roadmap-list" id="modal-roadmap-list">
+                    <div class="modal-roadmap-header">
+                        <h3>📋 Demo Roadmap Checklist</h3>
+                        <div class="roadmap-progress-container" id="modal-progress-container">
+                            <div class="progress-header">
+                                <span class="progress-label">Task Progress</span>
+                                <span class="progress-percent" id="modal-progress-percent">0% Completed</span>
+                            </div>
+                            <div class="progress-bar-outer">
+                                <div class="progress-bar-inner" id="modal-progress-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="modal-roadmap-list" id="modal-roadmap-list">
                         <!-- Roadmap steps injected here -->
-                    </ol>
+                    </ul>
                 </div>
             </div>
         </div>

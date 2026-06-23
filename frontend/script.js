@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Global state to store last generated ideas for modal lookup
     let generatedIdeasCache = [];
+    let activeIdeaIndex = -1;
 
     // Categories mapping to match different type rules
     const ideaTypeLabels = [
@@ -195,9 +196,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Helper to categorize technology tags for custom color gradients
+    function getTechCategory(tech) {
+        const t = tech.toLowerCase();
+        if (t.includes('python') || t.includes('numpy') || t.includes('pandas') || t.includes('pytorch') || 
+            t.includes('tensorflow') || t.includes('llm') || t.includes('openai') || t.includes('gemini') || 
+            t.includes('scikit') || t.includes('langchain') || t.includes('llama') || t.includes('bert') || 
+            t.includes('ai') || t.includes('ml') || t.includes('claude') || t.includes('hugging')) {
+            return 'ai';
+        }
+        if (t.includes('react') || t.includes('next.js') || t.includes('vue') || t.includes('svelte') || 
+            t.includes('html') || t.includes('css') || t.includes('javascript') || t.includes('typescript') || 
+            t.includes('frontend') || t.includes('tailwind') || t.includes('bootstrap') || t.includes('express') ||
+            t.includes('fastapi') || t.includes('django') || t.includes('flask') || t.includes('node')) {
+            return 'web';
+        }
+        if (t.includes('postgres') || t.includes('mongodb') || t.includes('mysql') || t.includes('redis') || 
+            t.includes('sqlite') || t.includes('sql') || t.includes('prisma') || t.includes('database') || 
+            t.includes('db') || t.includes('supabase') || t.includes('firebase')) {
+            return 'db';
+        }
+        return 'sys'; // systems, devops, scripts, default
+    }
+
     // Populate and render results section
     function renderResults(data) {
-        ideasGrid.innerHTML = '';
+        let cardsHTML = '';
         const bestIndex = data.best_idea_index !== undefined ? data.best_idea_index : 0;
         
         // Render Mentor Pick explanation
@@ -213,14 +237,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const isBest = index === bestIndex;
             const cardType = ideaTypeLabels[index] || "Project Idea";
 
-            const techPills = idea.tech_stack.map(tech => `<span class="tech-tag">${escapeHtml(tech)}</span>`).join('');
+            const techPills = idea.tech_stack.map(tech => `
+                <span class="tech-tag tech-${getTechCategory(tech)}">${escapeHtml(tech)}</span>
+            `).join('');
 
             // Minimal roadmap representation for the card itself
             const miniRoadmap = idea.roadmap.slice(0, 2).map((step, stepIdx) => `
                 <li data-step="${stepIdx + 1}">${escapeHtml(step)}</li>
             `).join('');
             
-            const cardHTML = `
+            cardsHTML += `
                 <div class="idea-card ${isBest ? 'best-card' : ''}" data-index="${index}" style="animation-delay: ${index * 100}ms">
                     ${isBest ? '<div class="card-pick-badge">🏆 Mentor Pick</div>' : ''}
                     <div class="idea-type-label">${escapeHtml(cardType)}</div>
@@ -261,9 +287,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
             `;
-            
-            ideasGrid.insertAdjacentHTML('beforeend', cardHTML);
         });
+        
+        ideasGrid.innerHTML = cardsHTML;
 
         // Toggle results visibility
         resultsSection.classList.remove('hidden');
@@ -279,12 +305,23 @@ document.addEventListener('DOMContentLoaded', () => {
         // Scroll down
         resultsSection.scrollIntoView({ behavior: 'smooth' });
 
-        // Re-attach card click triggers for detailed modal lookup
-        document.querySelectorAll('.idea-card').forEach(card => {
+        // Re-attach card click triggers and cursor spotlight listeners
+        const cards = document.querySelectorAll('.idea-card');
+        cards.forEach(card => {
             card.addEventListener('click', (e) => {
-                // Avoid trigger if clicking individual tag links or buttons directly (if any)
+                // Ensure clicks on individual interactive elements don't double fire
+                if (e.target.closest('.tech-tag')) return;
                 const index = parseInt(card.getAttribute('data-index'), 10);
                 openDetailsModal(index);
+            });
+
+            // Tracking mouse position for cursor-following radial spotlight glow
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
             });
         });
     }
@@ -295,21 +332,40 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!idea) return;
 
         const cardType = ideaTypeLabels[index] || "Project Idea";
+        activeIdeaIndex = index; // Store globally for copy command reference
 
         // Set static texts
         modalTitle.textContent = idea.title;
         modalDesc.textContent = idea.description;
         modalType.textContent = cardType;
         
-        // Dynamic tech tags
+        // Dynamic tech tags with categorized colors
         modalTechList.innerHTML = idea.tech_stack.map(tech => `
-            <span class="tech-tag">${escapeHtml(tech)}</span>
+            <span class="tech-tag tech-${getTechCategory(tech)}">${escapeHtml(tech)}</span>
         `).join('');
 
-        // Full roadmap list mapping
+        // Full roadmap list mapping with interactive checklist inputs
         modalRoadmapList.innerHTML = idea.roadmap.map((step, idx) => `
-            <li data-step="${idx + 1}">${escapeHtml(step)}</li>
+            <li class="roadmap-item">
+                <label class="checkbox-wrapper">
+                    <input type="checkbox" class="roadmap-checkbox" data-index="${idx}">
+                    <span class="custom-checkbox" data-step="${idx + 1}"></span>
+                </label>
+                <span class="roadmap-text">${escapeHtml(step)}</span>
+            </li>
         `).join('');
+
+        // Reset progress bar to 0% initially
+        updateRoadmapProgress(0, idea.roadmap.length);
+
+        // Bind checklist checkbox change handlers
+        const checkboxes = modalRoadmapList.querySelectorAll('.roadmap-checkbox');
+        checkboxes.forEach(cb => {
+            cb.addEventListener('change', () => {
+                const checkedCount = modalRoadmapList.querySelectorAll('.roadmap-checkbox:checked').length;
+                updateRoadmapProgress(checkedCount, idea.roadmap.length);
+            });
+        });
 
         // Score numbers
         modalComplexityVal.textContent = `${idea.complexity_score}/10`;
@@ -328,6 +384,20 @@ document.addEventListener('DOMContentLoaded', () => {
             modalComplexityBar.style.width = `${idea.complexity_score * 10}%`;
             modalImpactBar.style.width = `${idea.impact_score * 10}%`;
         }, 50);
+    }
+
+    // Update dynamic progress tracker bar and state percentage
+    function updateRoadmapProgress(checkedCount, total) {
+        const percent = total > 0 ? Math.round((checkedCount / total) * 100) : 0;
+        const progressPercent = document.getElementById('modal-progress-percent');
+        const progressBar = document.getElementById('modal-progress-bar');
+        
+        if (progressPercent) {
+            progressPercent.textContent = `${percent}% Completed (${checkedCount}/${total})`;
+        }
+        if (progressBar) {
+            progressBar.style.width = `${percent}%`;
+        }
     }
 
     function closeDetailsModal() {
@@ -355,6 +425,90 @@ document.addEventListener('DOMContentLoaded', () => {
             closeDetailsModal();
         }
     });
+
+    // Copy markdown button click listener
+    const modalCopyBtn = document.getElementById('modal-copy-btn');
+    if (modalCopyBtn) {
+        modalCopyBtn.addEventListener('click', () => {
+            if (activeIdeaIndex === -1 || !generatedIdeasCache[activeIdeaIndex]) return;
+            const idea = generatedIdeasCache[activeIdeaIndex];
+            const cardType = ideaTypeLabels[activeIdeaIndex] || "Project Idea";
+
+            // Format markdown text
+            let markdown = `# ${idea.title}\n\n`;
+            markdown += `**Category**: ${cardType}\n`;
+            markdown += `**Description**: ${idea.description}\n\n`;
+            markdown += `## 🛠️ Technology Stack\n`;
+            idea.tech_stack.forEach(tech => {
+                markdown += `- ${tech}\n`;
+            });
+            markdown += `\n`;
+            markdown += `## 📊 Judge Scores\n`;
+            markdown += `- Complexity Score: ${idea.complexity_score}/10\n`;
+            markdown += `- Demo Impact Score: ${idea.impact_score}/10\n\n`;
+            markdown += `## 📋 Implementation Roadmap\n`;
+            
+            // Collect checked statuses from active checkboxes in modal
+            const cbElements = modalRoadmapList.querySelectorAll('.roadmap-checkbox');
+            idea.roadmap.forEach((step, idx) => {
+                const isChecked = cbElements[idx] && cbElements[idx].checked;
+                markdown += `- [${isChecked ? 'x' : ' '}] ${step}\n`;
+            });
+
+            // Copy to clipboard
+            navigator.clipboard.writeText(markdown).then(() => {
+                // Show success status on button
+                modalCopyBtn.classList.add('copied');
+                const btnTextEl = modalCopyBtn.querySelector('.copy-btn-text');
+                if (btnTextEl) {
+                    btnTextEl.textContent = 'Copied!';
+                }
+
+                // Show toast notification
+                showToast('📋 Project details copied as Markdown!');
+
+                // Reset button text after 2 seconds
+                setTimeout(() => {
+                    modalCopyBtn.classList.remove('copied');
+                    if (btnTextEl) {
+                        btnTextEl.textContent = 'Copy Markdown';
+                    }
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                showToast('❌ Copy failed. Please try again.');
+            });
+        });
+    }
+
+    // Toast Notification utility
+    function showToast(message) {
+        let container = document.getElementById('toast-container');
+        if (!container) {
+            container = document.createElement('div');
+            container.id = 'toast-container';
+            container.className = 'toast-container';
+            document.body.appendChild(container);
+        }
+
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.innerHTML = `<span>⚡</span><span>${message}</span>`;
+        container.appendChild(toast);
+
+        // Trigger animation
+        setTimeout(() => {
+            toast.classList.add('show');
+        }, 10);
+
+        // Dismiss after 3 seconds
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => {
+                toast.remove();
+            }, 400);
+        }, 3000);
+    }
 
     // Helper function to escape text parameters
     function escapeHtml(str) {
