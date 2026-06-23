@@ -1331,18 +1331,19 @@ select:focus {
 }
 
 .idea-card h3 {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.45rem;
+    font-family: 'Outfit', 'Inter', sans-serif;
+    font-size: 1.65rem;
     font-weight: 700;
-    margin-bottom: 12px;
-    line-height: 1.3;
+    margin-bottom: 16px;
+    line-height: 1.35;
+    letter-spacing: -0.2px;
 }
 
 .idea-card p.desc {
     color: var(--color-text-muted);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 20px;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin-bottom: 28px;
     flex-grow: 1;
 }
 
