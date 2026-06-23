@@ -1313,9 +1313,12 @@ select:focus {
     font-size: 0.75rem;
     font-weight: 800;
     text-transform: uppercase;
-    padding: 3px 10px;
+    padding: 4px 12px;
     border-radius: 50px;
     z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .idea-type-label {
@@ -2502,5 +2505,43 @@ select:focus {
 
 .idea-card:hover .card-action-hint .arrow-right-svg {
     transform: translateX(4px);
+}
+
+/* 5. Custom SVG Icons Styling */
+.logo-icon-svg {
+    width: 22px;
+    height: 22px;
+    stroke: var(--color-accent);
+    fill: var(--color-accent);
+    filter: drop-shadow(0 0 6px var(--color-accent-glow));
+    animation: float-icon 3s ease-in-out infinite;
+    flex-shrink: 0;
+}
+
+.badge-icon-svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    stroke-width: 2.5px;
+    fill: none;
+    flex-shrink: 0;
+}
+
+/* Toast SVG customization */
+.toast-icon-svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--color-accent);
+    fill: none;
+    flex-shrink: 0;
+}
+
+.toast.toast-error {
+    border-color: var(--color-error);
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.6), 0 0 15px rgba(239, 68, 68, 0.15);
+}
+
+.toast.toast-error .toast-icon-svg {
+    stroke: var(--color-error);
 }
 

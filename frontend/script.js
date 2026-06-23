@@ -243,7 +243,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
             cardsHTML += `
                 <div class="idea-card ${isBest ? 'best-card' : ''}" data-index="${index}" style="animation-delay: ${index * 100}ms">
-                    ${isBest ? '<div class="card-pick-badge">🏆 Mentor Pick</div>' : ''}
+                    ${isBest ? `
+                        <div class="card-pick-badge">
+                            <svg class="badge-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                                <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                                <path d="M4 22h16"></path>
+                                <path d="M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34"></path>
+                                <path d="M12 2a5 5 0 0 0-5 5v3c0 2.2 1.8 4 4 4h2c2.2 0 4-1.8 4-4V7a5 5 0 0 0-5-5z"></path>
+                            </svg>
+                            <span>Mentor Pick</span>
+                        </div>
+                    ` : ''}
                     <div class="idea-type-label">${escapeHtml(cardType)}</div>
                     <h3>${escapeHtml(idea.title)}</h3>
                     <p class="desc">${escapeHtml(idea.description)}</p>
@@ -431,7 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 // Show toast notification
-                showToast('📋 Project details copied as Markdown!');
+                showToast('Project details copied as Markdown!', 'success');
 
                 // Reset button text after 2 seconds
                 setTimeout(() => {
@@ -442,13 +453,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 2000);
             }).catch(err => {
                 console.error('Failed to copy text: ', err);
-                showToast('❌ Copy failed. Please try again.');
+                showToast('Copy failed. Please try again.', 'error');
             });
         });
     }
 
     // Toast Notification utility
-    function showToast(message) {
+    function showToast(message, type = 'success') {
         let container = document.getElementById('toast-container');
         if (!container) {
             container = document.createElement('div');
@@ -458,8 +469,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const toast = document.createElement('div');
-        toast.className = 'toast';
-        toast.innerHTML = `<span>⚡</span><span>${message}</span>`;
+        toast.className = `toast toast-${type}`;
+        
+        let iconHTML = '';
+        if (type === 'success') {
+            iconHTML = `
+                <svg class="toast-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            `;
+        } else {
+            iconHTML = `
+                <svg class="toast-icon-svg toast-error-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+            `;
+        }
+
+        toast.innerHTML = `${iconHTML}<span>${message}</span>`;
         container.appendChild(toast);
 
         // Trigger animation
