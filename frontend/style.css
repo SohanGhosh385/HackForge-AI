@@ -1171,15 +1171,16 @@ select:focus {
 }
 
 .mentor-reason-box h3 {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.25rem;
-    margin-bottom: 6px;
+    font-family: 'Outfit', 'Inter', sans-serif;
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    font-weight: 700;
 }
 
 .mentor-reason-box p {
     color: var(--color-text-muted);
-    font-size: 1.05rem;
-    line-height: 1.6;
+    font-size: 1.2rem;
+    line-height: 1.7;
 }
 
 /* Results Grid Layout */
@@ -1263,26 +1264,20 @@ select:focus {
 }
 
 .idea-card.best-card::before {
-    padding: 2.5px;
-    background: conic-gradient(
-        from var(--rim-angle),
-        rgba(20, 184, 166, 0.08) 0%,
-        rgba(20, 184, 166, 0.08) 25%,
-        var(--color-accent) 30%,
-        rgba(20, 184, 166, 0.08) 35%,
-        rgba(20, 184, 166, 0.08) 100%
-    );
-    animation: rim-rotate 6s linear infinite;
+    padding: 1.5px;
+    background: transparent;
+    transition: background 0.4s ease;
 }
 
 .idea-card.best-card::after {
-    inset: 2.5px;
-    border-radius: calc(var(--border-radius-lg) - 1.5px);
-    background: radial-gradient(circle at 5% 5%, rgba(20, 184, 166, 0.06) 0%, rgba(20, 184, 166, 0.01) 40%, rgba(0, 0, 0, 0) 70%),
-                hsla(225, 20%, 12%, 0.95);
+    inset: 1.5px;
+    border-radius: calc(var(--border-radius-lg) - 0.5px);
+    background: var(--color-surface);
+    transition: background 0.4s ease;
 }
 
 .idea-card.best-card:hover::before {
+    padding: 2px;
     background: conic-gradient(
         from var(--rim-angle),
         rgba(20, 184, 166, 0.15) 0%,
@@ -1291,9 +1286,12 @@ select:focus {
         rgba(20, 184, 166, 0.15) 30%,
         rgba(20, 184, 166, 0.15) 100%
     );
+    animation: rim-rotate 6s linear infinite;
 }
 
 .idea-card.best-card:hover::after {
+    inset: 2px;
+    border-radius: calc(var(--border-radius-lg) - 1px);
     background: radial-gradient(400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(20, 184, 166, 0.1) 0%, rgba(99, 102, 241, 0.04) 50%, var(--color-surface-hover) 100%),
                 var(--color-surface-hover);
 }
