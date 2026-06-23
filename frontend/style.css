@@ -2469,3 +2469,37 @@ select:focus {
     transform: translateY(0);
 }
 
+/* Card interactive explore action hint */
+.card-action-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-top: auto;
+    padding-top: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: var(--transition-smooth);
+}
+
+.card-action-hint .arrow-right-svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    stroke-width: 2.5px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.idea-card:hover .card-action-hint {
+    color: hsl(175, 95%, 50%);
+}
+
+.idea-card:hover .card-action-hint .arrow-right-svg {
+    transform: translateX(4px);
+}
+

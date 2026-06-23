@@ -241,11 +241,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="tech-tag tech-${getTechCategory(tech)}">${escapeHtml(tech)}</span>
             `).join('');
 
-            // Minimal roadmap representation for the card itself
-            const miniRoadmap = idea.roadmap.slice(0, 2).map((step, stepIdx) => `
-                <li data-step="${stepIdx + 1}">${escapeHtml(step)}</li>
-            `).join('');
-            
             cardsHTML += `
                 <div class="idea-card ${isBest ? 'best-card' : ''}" data-index="${index}" style="animation-delay: ${index * 100}ms">
                     ${isBest ? '<div class="card-pick-badge">🏆 Mentor Pick</div>' : ''}
@@ -257,33 +252,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${techPills}
                     </div>
 
-                    <div class="roadmap-section">
-                        <h4>Demo Preview</h4>
-                        <ol class="roadmap-steps">
-                            ${miniRoadmap}
-                            ${idea.roadmap.length > 2 ? `<li class="more-steps" style="list-style: none; padding-left: 0; font-size: 0.8rem; color: var(--color-accent); font-weight: 600; margin-top: 5px;">+ Click card to see full roadmap</li>` : ''}
-                        </ol>
-                    </div>
-
-                    <div class="score-meters">
-                        <div class="meter-group">
-                            <div class="meter-label-row">
-                                <span>Complexity Level</span>
-                                <span class="meter-val">${idea.complexity_score}/10</span>
-                            </div>
-                            <div class="meter-bar-outer">
-                                <div class="meter-bar-inner complexity-bar" data-score="${idea.complexity_score}"></div>
-                            </div>
-                        </div>
-                        <div class="meter-group">
-                            <div class="meter-label-row">
-                                <span>Demo Impact</span>
-                                <span class="meter-val">${idea.impact_score}/10</span>
-                            </div>
-                            <div class="meter-bar-outer">
-                                <div class="meter-bar-inner impact-bar" data-score="${idea.impact_score}"></div>
-                            </div>
-                        </div>
+                    <div class="card-action-hint">
+                        <span>Explore roadmap & metrics</span>
+                        <svg class="arrow-right-svg" viewBox="0 0 24 24">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
                     </div>
                 </div>
             `;
@@ -293,14 +267,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Toggle results visibility
         resultsSection.classList.remove('hidden');
-
-        // Apply slide transition for values
-        setTimeout(() => {
-            document.querySelectorAll('.meter-bar-inner').forEach(bar => {
-                const score = parseInt(bar.getAttribute('data-score'), 10) || 0;
-                bar.style.width = `${Math.min(100, Math.max(0, score * 10))}%`;
-            });
-        }, 100);
 
         // Scroll down
         resultsSection.scrollIntoView({ behavior: 'smooth' });
