@@ -7,7 +7,9 @@ slugs = [
     "bootstrap", "stripe", "html5", "css3", "javascript", 
     "pandas", "googlegemini", "openai", "pytorch", 
     "nodedotjs", "flask", "django", "numpy", "scikitlearn",
-    "redis", "mongodb"
+    "redis", "mongodb", "tailwindcss", "langchain", "docker",
+    "apachekafka", "celery", "twilio", "rabbitmq", "ethereum",
+    "google"
 ]
 
 results = {}
