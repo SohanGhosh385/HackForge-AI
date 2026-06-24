@@ -1458,17 +1458,20 @@ select:focus {
     background-color: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.04);
     border-radius: var(--border-radius-lg);
-    padding: 40px;
+    padding: 50px 60px;
     text-align: center;
 }
 
 
 .about-card p {
     color: var(--color-text-muted);
-    font-size: 1.05rem;
-    line-height: 1.7;
-    max-width: 800px;
+    font-family: 'Inter', 'Outfit', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.85;
+    max-width: 900px;
     margin: 0 auto;
+    letter-spacing: 0.01em;
 }
 
 /* Modal Popup Overlay styling */
@@ -1628,7 +1631,7 @@ select:focus {
 .app-footer {
     background-color: rgba(6, 8, 14, 0.8);
     border-top: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 40px 24px;
+    padding: 56px 24px 48px;
     margin-top: 60px;
 }
 
@@ -1638,34 +1641,58 @@ select:focus {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 20px;
     text-align: center;
 }
 
 .footer-container p {
-    font-size: 0.9rem;
+    font-family: 'Inter', 'Outfit', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 500;
     color: var(--color-text-muted);
+    letter-spacing: 0.01em;
 }
 
 .footer-links {
     display: flex;
-    gap: 20px;
+    gap: 28px;
 }
 
 .footer-links a {
-    color: var(--color-text-dim);
-    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    font-family: 'Inter', 'Outfit', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 500;
     text-decoration: none;
     transition: var(--transition-smooth);
+    position: relative;
+}
+
+.footer-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background: var(--color-accent);
+    transition: width 0.3s ease;
 }
 
 .footer-links a:hover {
     color: var(--color-accent);
 }
 
+.footer-links a:hover::after {
+    width: 100%;
+}
+
 .footer-container p.copyright {
-    font-size: 0.8rem;
+    font-family: 'Inter', 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
     color: var(--color-text-dim);
+    margin-top: 4px;
 }
 
 /* Mobile Navbar Styles */
