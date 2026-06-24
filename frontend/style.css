@@ -94,11 +94,11 @@ body {
     background: var(--color-bg);
 }
 ::-webkit-scrollbar-thumb {
-    background: var(--color-text-dim);
+    background: var(--color-accent);
     border-radius: var(--border-radius-sm);
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-text-muted);
+    background: hsl(175, 85%, 55%);
 }
 
 .hidden {
