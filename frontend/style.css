@@ -1350,7 +1350,7 @@ select:focus {
     flex-wrap: nowrap;
     gap: 8px;
     margin-bottom: 24px;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
 }
 
