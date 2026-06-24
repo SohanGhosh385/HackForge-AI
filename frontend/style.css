@@ -1381,8 +1381,6 @@ select:focus {
 .tech-tag .pill-icon-svg {
     width: 13px;
     height: 13px;
-    stroke: currentColor;
-    fill: none;
     flex-shrink: 0;
     transition: transform 0.3s ease;
 }
