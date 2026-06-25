@@ -66,8 +66,9 @@ body {
 
 .background-decor-2 {
     position: absolute;
-    top: 40%;
+    top: 50%;
     right: -250px;
+    transform: translateY(-50%);
     width: 75vw;
     height: 75vw;
     background: radial-gradient(circle, rgba(20, 184, 166, 0.14) 0%, rgba(20, 184, 166, 0.04) 40%, rgba(0,0,0,0) 80%);
@@ -99,8 +100,9 @@ body {
 
 .background-decor-5 {
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: -250px;
+    transform: translateY(-50%);
     width: 75vw;
     height: 75vw;
     background: radial-gradient(circle, rgba(20, 184, 166, 0.14) 0%, rgba(20, 184, 166, 0.04) 40%, rgba(0,0,0,0) 80%);
@@ -702,6 +704,7 @@ body {
     max-width: 1500px;
     margin: 0 auto;
     padding: 80px 24px;
+    position: relative;
 }
 
 .generator-section .section-header {
