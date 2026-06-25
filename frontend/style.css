@@ -77,11 +77,11 @@ body {
 
 .background-decor-3 {
     position: absolute;
-    bottom: -100px;
-    left: -100px;
-    width: 40vw;
-    height: 40vw;
-    background: radial-gradient(circle, rgba(20, 184, 166, 0.1) 0%, rgba(0,0,0,0) 75%);
+    bottom: -200px;
+    left: -200px;
+    width: 75vw;
+    height: 75vw;
+    background: radial-gradient(circle, rgba(20, 184, 166, 0.14) 0%, rgba(20, 184, 166, 0.04) 40%, rgba(0,0,0,0) 80%);
     z-index: -1;
     pointer-events: none;
 }
@@ -1648,8 +1648,10 @@ select:focus {
 
 /* Footer Section */
 .app-footer {
-    background-color: rgba(6, 8, 14, 0.8);
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: rgba(6, 8, 14, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(20, 184, 166, 0.12);
     padding: 56px 24px 48px;
     margin-top: 60px;
 }
