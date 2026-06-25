@@ -67,10 +67,10 @@ body {
 .background-decor-2 {
     position: absolute;
     top: 40%;
-    right: -200px;
-    width: 60vw;
-    height: 60vw;
-    background: radial-gradient(circle, rgba(20, 184, 166, 0.1) 0%, rgba(0,0,0,0) 75%);
+    right: -250px;
+    width: 75vw;
+    height: 75vw;
+    background: radial-gradient(circle, rgba(20, 184, 166, 0.14) 0%, rgba(20, 184, 166, 0.04) 40%, rgba(0,0,0,0) 80%);
     z-index: -1;
     pointer-events: none;
 }
@@ -90,6 +90,17 @@ body {
     position: absolute;
     bottom: -200px;
     right: -200px;
+    width: 75vw;
+    height: 75vw;
+    background: radial-gradient(circle, rgba(20, 184, 166, 0.14) 0%, rgba(20, 184, 166, 0.04) 40%, rgba(0,0,0,0) 80%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.background-decor-5 {
+    position: absolute;
+    top: 40%;
+    left: -250px;
     width: 75vw;
     height: 75vw;
     background: radial-gradient(circle, rgba(20, 184, 166, 0.14) 0%, rgba(20, 184, 166, 0.04) 40%, rgba(0,0,0,0) 80%);
