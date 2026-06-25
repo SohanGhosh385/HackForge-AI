@@ -59,7 +59,7 @@ body {
     left: -100px;
     width: 50vw;
     height: 50vw;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(0,0,0,0) 70%);
+    background: radial-gradient(circle, rgba(20, 184, 166, 0.14) 0%, rgba(20, 184, 166, 0.04) 40%, rgba(0,0,0,0) 80%);
     z-index: -1;
     pointer-events: none;
 }
@@ -308,6 +308,7 @@ body {
     justify-content: center;
     padding: 110px 24px 80px;
     text-align: center;
+    position: relative;
 }
 
 .hero-content {
