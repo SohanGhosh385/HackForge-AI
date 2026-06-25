@@ -108,8 +108,10 @@ body {
     background-size: 10px 6px;
 }
 ::-webkit-scrollbar-button:single-button:vertical:increment {
-    height: 0;
-    display: none;
+    height: 8px;
+    width: 12px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 5'%3E%3Cpolygon points='0,0 10,0 5,5' fill='%2320c9a6'/%3E%3C/svg%3E") no-repeat center top;
+    background-size: 10px 6px;
 }
 
 .hidden {
