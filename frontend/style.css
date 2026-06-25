@@ -230,8 +230,8 @@ body {
     overflow: hidden;
     z-index: 1;
     background: transparent;
-    color: hsl(250, 85%, 75%);
-    border: 1.5px solid hsl(250, 85%, 70%);
+    color: hsl(174, 90%, 70%);
+    border: 1.5px solid hsl(174, 80%, 60%);
     text-decoration: none;
     padding: 8px 32px;
     border-radius: 50px;
@@ -254,7 +254,7 @@ body {
     width: 100%;
     height: 100%;
     z-index: -1;
-    background: linear-gradient(135deg, var(--color-primary) 0%, hsl(265, 80%, 55%) 100%);
+    background: linear-gradient(135deg, hsl(174, 95%, 17%) 0%, hsl(174, 85%, 25%) 100%);
     transform: scale(0);
     transform-origin: bottom left;
     transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -265,7 +265,7 @@ body {
 .nav-cta:active {
     color: white;
     border-color: transparent;
-    box-shadow: 0 4px 15px var(--color-primary-glow);
+    box-shadow: 0 4px 15px rgba(0, 86, 79, 0.35);
     transform: translateY(-1px);
 }
 
