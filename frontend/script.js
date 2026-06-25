@@ -65,15 +65,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Smooth scrolling for all anchor links (since html scroll-behavior is auto to keep scrollbar navigation gradual)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                smoothScrollTo(targetElement);
+            }
+        });
+    });
+
     // Helper function for offset smooth scrolling below the fixed top navbar
     function smoothScrollTo(element) {
         if (!element) return;
         const navbarHeight = navbarEl ? navbarEl.offsetHeight : 80;
         const rect = element.getBoundingClientRect();
         const absoluteTop = rect.top + window.scrollY;
-        const targetOffset = absoluteTop - navbarHeight - 24; // clean margin spacing
+        // If it's the home header, scroll all the way to the top
+        const targetOffset = element.id === 'home' ? 0 : absoluteTop - navbarHeight - 24;
         window.scrollTo({
-            top: targetOffset,
+            top: Math.max(0, targetOffset),
             behavior: 'smooth'
         });
     }
