@@ -1693,9 +1693,7 @@ select:focus {
 
 /* Footer Section */
 .app-footer {
-    background-color: rgba(6, 8, 14, 0.65);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: transparent;
     padding: 56px 24px 48px;
     margin-top: 60px;
 }
