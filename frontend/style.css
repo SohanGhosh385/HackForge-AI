@@ -78,7 +78,7 @@ body {
 
 .background-decor-3 {
     position: absolute;
-    bottom: -200px;
+    bottom: 0;
     left: -200px;
     width: 75vw;
     height: 75vw;
@@ -89,7 +89,7 @@ body {
 
 .background-decor-4 {
     position: absolute;
-    bottom: -200px;
+    bottom: 0;
     right: -200px;
     width: 75vw;
     height: 75vw;
@@ -1694,8 +1694,9 @@ select:focus {
 /* Footer Section */
 .app-footer {
     background: transparent;
-    padding: 96px 24px 48px;
+    padding: 96px 24px 24px; /* Reduced from 48px to minimize bottom space */
     margin-top: 100px;
+    border-top: 1px solid rgba(20, 184, 166, 0.15); /* Subtle teal top border to match the Oryonix separator style */
 }
 
 .footer-container {
@@ -1708,7 +1709,7 @@ select:focus {
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr 1fr;
     gap: 48px;
-    margin-bottom: 64px;
+    margin-bottom: 48px; /* Reduced bottom margin of grid slightly */
     text-align: left;
 }
 
@@ -1725,7 +1726,7 @@ select:focus {
 .footer-logo {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     text-decoration: none;
     margin-bottom: 12px;
     transition: transform 0.3s ease, filter 0.3s ease;
@@ -1739,6 +1740,7 @@ select:focus {
 /* Footer specific logo styling to match the right attachment (completely teal brand logo) */
 .app-footer .footer-logo .logo-text {
     color: var(--color-accent) !important;
+    font-size: 1.85rem; /* Increased size to match left attachment */
 }
 
 .app-footer .footer-logo .accent-text {
@@ -1746,49 +1748,39 @@ select:focus {
     text-shadow: 0 0 10px var(--color-accent-glow);
 }
 
+.app-footer .footer-logo .logo-icon-svg {
+    width: 32px; /* Increased icon size */
+    height: 32px;
+}
+
 .brand-description {
-    font-size: 0.95rem;
+    font-size: 1.15rem; /* Increased from 1.05rem */
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.65);
-    max-width: 320px;
+    max-width: 420px; /* Increased from 360px */
 }
 
 .footer-col h4 {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    font-size: 0.95rem;
+    font-size: 1.25rem; /* Increased from 1.1rem */
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.2px;
     color: var(--color-text-main);
-    margin-bottom: 12px;
-    position: relative;
-    padding-bottom: 8px;
-    display: inline-block;
-    width: fit-content;
-}
-
-.footer-col h4::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 20px;
-    height: 2px;
-    background-color: var(--color-accent);
-    border-radius: 1px;
+    margin-bottom: 24px; /* Adjusted spacing to match Oryonix layout */
 }
 
 .footer-links-list {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 16px; /* Increased gap slightly */
 }
 
 .footer-links-list a {
     color: rgba(255, 255, 255, 0.65);
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 1.15rem; /* Increased from 1.05rem */
     font-weight: 500;
     transition: var(--transition-smooth);
     position: relative;
@@ -1819,32 +1811,15 @@ select:focus {
     border-top: none;
     padding-top: 48px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
 }
 
 .footer-bottom p.copyright {
     font-family: 'Inter', system-ui, sans-serif;
-    font-size: 0.85rem;
+    font-size: 1.05rem; /* Increased from 0.95rem */
     color: rgba(255, 255, 255, 0.35);
-}
-
-.footer-legal-links {
-    display: flex;
-    gap: 32px;
-}
-
-.footer-legal-links a {
-    color: rgba(255, 255, 255, 0.35);
-    text-decoration: none;
-    font-size: 0.85rem;
-    transition: var(--transition-smooth);
-}
-
-.footer-legal-links a:hover {
-    color: var(--color-accent);
+    text-align: center;
 }
 
 /* Footer Responsive Breakpoints */
@@ -1873,12 +1848,7 @@ select:focus {
     
     .footer-bottom {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
-    }
-    
-    .footer-legal-links {
-        flex-wrap: wrap;
+        align-items: center; /* Centered layout for mobile viewports */
         gap: 16px;
     }
 }
