@@ -309,6 +309,7 @@ body {
     padding: 110px 24px 80px;
     text-align: center;
     position: relative;
+    background: radial-gradient(circle at 50% 100%, rgba(20, 184, 166, 0.05) 0%, transparent 70%);
 }
 
 .hero-content {
@@ -484,10 +485,17 @@ body {
 
 /* Features Grid Section */
 .features-section {
-    max-width: 1800px;
-    margin: 0 auto;
+    width: 100%;
     padding: 80px 24px;
     position: relative;
+    background: radial-gradient(circle at 50% 0%, rgba(20, 184, 166, 0.05) 0%, transparent 70%), 
+                radial-gradient(circle at 50% 100%, rgba(20, 184, 166, 0.05) 0%, transparent 70%);
+}
+
+.features-wrapper {
+    width: 100%;
+    max-width: 1800px;
+    margin: 0 auto;
 }
 
 .section-header {
@@ -706,10 +714,16 @@ body {
 
 /* Generator & Dashboard Sections */
 .generator-section {
-    max-width: 1500px;
-    margin: 0 auto;
+    width: 100%;
     padding: 80px 24px;
     position: relative;
+    background: radial-gradient(circle at 50% 0%, rgba(20, 184, 166, 0.05) 0%, transparent 70%);
+}
+
+.generator-wrapper {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
 }
 
 .generator-section .section-header {
