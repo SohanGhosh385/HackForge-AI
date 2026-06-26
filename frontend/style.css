@@ -2752,7 +2752,7 @@ select:focus {
     font-weight: 800;
     line-height: 1.15;
     margin-bottom: 8px;
-    background: linear-gradient(135deg, hsl(250, 85%, 68%) 0%, var(--color-accent) 100%);
+    background: linear-gradient(135deg, hsl(175, 85%, 45%) 0%, hsl(175, 90%, 30%) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -2815,5 +2815,44 @@ select:focus {
     .document-card h1 {
         font-size: 2.2rem;
     }
+}
+
+/* Document Action Buttons (Pill shaped teal theme to match attachment) */
+.document-actions {
+    margin-top: 48px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.doc-btn-primary {
+    background: linear-gradient(135deg, hsl(175, 80%, 40%) 0%, hsl(175, 85%, 28%) 100%);
+    border: 1px solid rgba(0, 180, 160, 0.35);
+    color: white;
+    text-decoration: none;
+    padding: 16px 40px;
+    border-radius: 9999px;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    transition: var(--transition-smooth);
+    box-shadow: 0 4px 15px rgba(0, 86, 79, 0.25);
+    outline: none;
+}
+
+.doc-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 86, 79, 0.45);
+    background: linear-gradient(135deg, hsl(175, 80%, 45%) 0%, hsl(175, 85%, 32%) 100%);
+    border-color: rgba(0, 180, 160, 0.5);
+}
+
+.doc-btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(0, 86, 79, 0.25);
 }
 

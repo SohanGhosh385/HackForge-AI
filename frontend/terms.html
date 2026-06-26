@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=11.51">
+    <link rel="stylesheet" href="style.css?v=11.54">
 </head>
 <body>
     <!-- Abstract Background Ambient Glows -->
@@ -69,6 +69,9 @@
                     <h2>8. Contact Us</h2>
                     <p>If you have any questions about these Terms, please reach out to us at <a href="mailto:support@hackforge.ai">support@hackforge.ai</a>.</p>
                 </div>
+                <div class="document-actions">
+                    <button id="accept-terms-btn" class="doc-btn-primary">I Read and Understand the Terms of Service</button>
+                </div>
             </article>
         </div>
     </main>
@@ -124,5 +127,21 @@
             </div>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const acceptBtn = document.getElementById('accept-terms-btn');
+            if (acceptBtn) {
+                if (localStorage.getItem('termsAccepted') === 'true') {
+                    acceptBtn.textContent = 'Terms of Service Accepted';
+                    acceptBtn.style.opacity = '0.8';
+                }
+                
+                acceptBtn.addEventListener('click', () => {
+                    localStorage.setItem('termsAccepted', 'true');
+                    window.location.href = 'index.html?accepted=terms';
+                });
+            }
+        });
+    </script>
 </body>
 </html>

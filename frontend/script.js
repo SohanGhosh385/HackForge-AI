@@ -716,4 +716,18 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // Check if redirecting back from legal page acceptance
+    const urlParams = new URLSearchParams(window.location.search);
+    const acceptedParam = urlParams.get('accepted');
+    if (acceptedParam) {
+        if (acceptedParam === 'terms') {
+            showToast('You have successfully accepted the Terms of Service.', 'success');
+        } else if (acceptedParam === 'privacy') {
+            showToast('You have successfully accepted the Privacy Policy.', 'success');
+        }
+        // Clean URL parameter without page reload
+        const newUrl = window.location.pathname + window.location.hash;
+        window.history.replaceState({}, document.title, newUrl);
+    }
 });

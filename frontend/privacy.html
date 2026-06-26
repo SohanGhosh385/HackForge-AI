@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=11.51">
+    <link rel="stylesheet" href="style.css?v=11.54">
 </head>
 <body>
     <!-- Abstract Background Ambient Glows -->
@@ -74,6 +74,9 @@
                     <h2>8. Contact Us</h2>
                     <p>If you have any questions or suggestions regarding this Privacy Policy, please contact us at <a href="mailto:privacy@hackforge.ai">privacy@hackforge.ai</a>.</p>
                 </div>
+                <div class="document-actions">
+                    <button id="accept-privacy-btn" class="doc-btn-primary">I Read and Understand the Privacy Policy</button>
+                </div>
             </article>
         </div>
     </main>
@@ -129,5 +132,21 @@
             </div>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const acceptBtn = document.getElementById('accept-privacy-btn');
+            if (acceptBtn) {
+                if (localStorage.getItem('privacyAccepted') === 'true') {
+                    acceptBtn.textContent = 'Privacy Policy Accepted';
+                    acceptBtn.style.opacity = '0.8';
+                }
+                
+                acceptBtn.addEventListener('click', () => {
+                    localStorage.setItem('privacyAccepted', 'true');
+                    window.location.href = 'index.html?accepted=privacy';
+                });
+            }
+        });
+    </script>
 </body>
 </html>
