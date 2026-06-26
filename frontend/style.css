@@ -1694,68 +1694,193 @@ select:focus {
 /* Footer Section */
 .app-footer {
     background: transparent;
-    padding: 56px 24px 48px;
-    margin-top: 60px;
+    padding: 96px 24px 48px;
+    margin-top: 100px;
 }
 
 .footer-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
+    width: 100%;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 64px;
+    text-align: left;
+}
+
+.footer-col {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 20px;
-    text-align: center;
 }
 
-.footer-container p {
-    font-family: 'Inter', 'Outfit', sans-serif;
-    font-size: 1.15rem;
-    font-weight: 500;
-    color: var(--color-text-muted);
-    letter-spacing: 0.01em;
+.brand-col {
+    padding-right: 24px;
 }
 
-.footer-links {
-    display: flex;
-    gap: 28px;
-}
-
-.footer-links a {
-    color: var(--color-text-muted);
-    font-family: 'Inter', 'Outfit', sans-serif;
-    font-size: 1.05rem;
-    font-weight: 500;
+.footer-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     text-decoration: none;
+    margin-bottom: 12px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.footer-logo:hover {
+    transform: translateY(-2px);
+    filter: drop-shadow(0 0 8px var(--color-accent-glow));
+}
+
+/* Footer specific logo styling to match the right attachment (completely teal brand logo) */
+.app-footer .footer-logo .logo-text {
+    color: var(--color-accent) !important;
+}
+
+.app-footer .footer-logo .accent-text {
+    color: var(--color-accent) !important;
+    text-shadow: 0 0 10px var(--color-accent-glow);
+}
+
+.brand-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.65);
+    max-width: 320px;
+}
+
+.footer-col h4 {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--color-text-main);
+    margin-bottom: 12px;
+    position: relative;
+    padding-bottom: 8px;
+    display: inline-block;
+    width: fit-content;
+}
+
+.footer-col h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 20px;
+    height: 2px;
+    background-color: var(--color-accent);
+    border-radius: 1px;
+}
+
+.footer-links-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.footer-links-list a {
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
     transition: var(--transition-smooth);
     position: relative;
+    display: inline-block;
+    width: fit-content;
 }
 
-.footer-links a::after {
+.footer-links-list a::after {
     content: '';
     position: absolute;
     bottom: -2px;
     left: 0;
     width: 0;
     height: 1.5px;
-    background: var(--color-accent);
+    background-color: var(--color-accent);
     transition: width 0.3s ease;
 }
 
-.footer-links a:hover {
+.footer-links-list a:hover {
     color: var(--color-accent);
 }
 
-.footer-links a:hover::after {
+.footer-links-list a:hover::after {
     width: 100%;
 }
 
-.footer-container p.copyright {
-    font-family: 'Inter', 'Outfit', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 400;
-    color: var(--color-text-dim);
-    margin-top: 4px;
+.footer-bottom {
+    border-top: none;
+    padding-top: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-bottom p.copyright {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.footer-legal-links {
+    display: flex;
+    gap: 32px;
+}
+
+.footer-legal-links a {
+    color: rgba(255, 255, 255, 0.35);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: var(--transition-smooth);
+}
+
+.footer-legal-links a:hover {
+    color: var(--color-accent);
+}
+
+/* Footer Responsive Breakpoints */
+@media (max-width: 992px) {
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+    
+    .brand-col {
+        grid-column: span 2;
+        padding-right: 0;
+        margin-bottom: 12px;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    
+    .brand-col {
+        grid-column: span 1;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+    
+    .footer-legal-links {
+        flex-wrap: wrap;
+        gap: 16px;
+    }
 }
 
 /* Mobile Navbar Styles */
