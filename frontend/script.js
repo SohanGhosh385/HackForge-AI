@@ -730,4 +730,75 @@ document.addEventListener('DOMContentLoaded', () => {
         const newUrl = window.location.pathname + window.location.hash;
         window.history.replaceState({}, document.title, newUrl);
     }
+
+    // Footer Modal Control Logic (Evaluation Guide & Judging Criteria)
+    const evalModal = document.getElementById('evaluation-modal');
+    const evalClose = document.getElementById('evaluation-modal-close');
+    const evalBtn = document.getElementById('footer-eval-btn');
+
+    const criteriaModal = document.getElementById('criteria-modal');
+    const criteriaClose = document.getElementById('criteria-modal-close');
+    const criteriaBtn = document.getElementById('footer-criteria-btn');
+
+    function openEvalModal(e) {
+        if (e) e.preventDefault();
+        if (evalModal) {
+            evalModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    function closeEvalModal() {
+        if (evalModal) {
+            evalModal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+    }
+
+    function openCriteriaModal(e) {
+        if (e) e.preventDefault();
+        if (criteriaModal) {
+            criteriaModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    function closeCriteriaModal() {
+        if (criteriaModal) {
+            criteriaModal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+    }
+
+    if (evalBtn) evalBtn.addEventListener('click', openEvalModal);
+    if (evalClose) evalClose.addEventListener('click', closeEvalModal);
+    if (evalModal) {
+        evalModal.addEventListener('click', (e) => {
+            if (e.target === evalModal) closeEvalModal();
+        });
+    }
+
+    if (criteriaBtn) criteriaBtn.addEventListener('click', openCriteriaModal);
+    if (criteriaClose) criteriaClose.addEventListener('click', closeCriteriaModal);
+    if (criteriaModal) {
+        criteriaModal.addEventListener('click', (e) => {
+            if (e.target === criteriaModal) closeCriteriaModal();
+        });
+    }
+
+    // Escape key trigger to close these modals as well
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeEvalModal();
+            closeCriteriaModal();
+        }
+    });
+
+    // Check if query params ask to open one of the modals
+    const openParam = urlParams.get('open');
+    if (openParam === 'evaluation') {
+        openEvalModal();
+    } else if (openParam === 'criteria') {
+        openCriteriaModal();
+    }
 });
