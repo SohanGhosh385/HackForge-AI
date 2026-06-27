@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=11.65">
+    <link rel="stylesheet" href="style.css?v=11.67">
 </head>
 <body>
     <!-- Abstract Background Ambient Glows -->
@@ -447,31 +447,33 @@
 
     <!-- Evaluation Guide Modal -->
     <div id="evaluation-modal" class="modal-overlay hidden" role="dialog" aria-modal="true">
-        <div class="modal-card">
+        <div class="modal-card teal-modal-card">
             <button class="modal-close" id="evaluation-modal-close" aria-label="Close modal">&times;</button>
             <div class="modal-header">
                 <span class="modal-type-badge">Resource Guide</span>
                 <h2>Evaluation Guide</h2>
                 <p>How HackForge AI analyzes, scores, and refines hackathon project concepts.</p>
             </div>
-            <div class="modal-body" style="display: block; color: var(--color-text-muted); line-height: 1.8; font-size: 1.05rem;">
-                <div style="margin-bottom: 24px;">
-                    <h3 style="color: var(--color-text-main); margin-bottom: 8px; font-size: 1.25rem;">1. Dynamic Calibrated Complexity</h3>
-                    <p>HackForge AI adjusts the difficulty calibration based on your team's hacking duration and background:
-                        <ul style="padding-left: 20px; margin-top: 8px;">
-                            <li><strong>Beginner (24h-48h):</strong> Focuses on serverless stacks, pre-built API integrations, and single-pane UI templates to guarantee a working demo.</li>
-                            <li><strong>Intermediate (48h-72h):</strong> Recommends structured databases, basic background workers, and modular design patterns.</li>
-                            <li><strong>Advanced (72h+ / Weeks):</strong> Introduces microservices, queue systems, custom ML model tuning, and production-grade architectures.</li>
-                        </ul>
-                    </p>
-                </div>
-                <div style="margin-bottom: 24px;">
-                    <h3 style="color: var(--color-text-main); margin-bottom: 8px; font-size: 1.25rem;">2. Technical Stack Feasibility Check</h3>
-                    <p>The AI recommendation engine validates your choice of technology against current production standards, library compatibilities, and learning curves, ensuring you don't pick libraries that are deprecated or excessively difficult to boot up in a high-pressure weekend environment.</p>
-                </div>
-                <div style="margin-bottom: 24px;">
-                    <h3 style="color: var(--color-text-main); margin-bottom: 8px; font-size: 1.25rem;">3. Architecture Blueprint Validation</h3>
-                    <p>Every generated idea undergoes a structural breakdown into three layers: Frontend client console, backend orchestration APIs, and storage databases/caches. This ensures your project is scalable, structured, and easy to present to judges.</p>
+            <div class="modal-body">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3><span class="num">01.</span> Dynamic Calibration</h3>
+                        <p>HackForge AI adjusts the difficulty calibration based on your team's hacking duration and background:
+                            <ul>
+                                <li><strong>Beginner (24h-48h):</strong> Serverless stacks, pre-built API integrations, and single-pane UI templates to guarantee a working demo.</li>
+                                <li><strong>Intermediate (48h-72h):</strong> Structured databases, basic background workers, and modular design patterns.</li>
+                                <li><strong>Advanced (72h+ / Weeks):</strong> Microservices, queue systems, custom ML model tuning, and production-grade architectures.</li>
+                            </ul>
+                        </p>
+                    </div>
+                    <div class="info-card">
+                        <h3><span class="num">02.</span> Feasibility Check</h3>
+                        <p>The AI recommendation engine validates your choice of technology against current production standards, library compatibilities, and learning curves, ensuring you don't pick libraries that are deprecated or excessively difficult to boot up in a high-pressure weekend environment.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3><span class="num">03.</span> Blueprint Validation</h3>
+                        <p>Every generated idea undergoes a structural breakdown into three layers: Frontend client console, backend orchestration APIs, and storage databases/caches. This ensures your project is scalable, structured, and easy to present to judges.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -479,29 +481,31 @@
 
     <!-- Judging Criteria Modal -->
     <div id="criteria-modal" class="modal-overlay hidden" role="dialog" aria-modal="true">
-        <div class="modal-card">
+        <div class="modal-card teal-modal-card">
             <button class="modal-close" id="criteria-modal-close" aria-label="Close modal">&times;</button>
             <div class="modal-header">
                 <span class="modal-type-badge">Judging Matrix</span>
                 <h2>Judging Criteria</h2>
                 <p>Standard hackathon scoring dimensions modeled by our evaluation engine.</p>
             </div>
-            <div class="modal-body" style="display: block; color: var(--color-text-muted); line-height: 1.8; font-size: 1.05rem;">
-                <div style="margin-bottom: 24px;">
-                    <h3 style="color: var(--color-text-main); margin-bottom: 8px; font-size: 1.25rem;">1. Technical Execution (30%)</h3>
-                    <p>Judges evaluate the depth of technical execution, correct choice of tools, architecture cleanliness, and how much functional code was actually built. Strive for a robust integration over simple mockups.</p>
-                </div>
-                <div style="margin-bottom: 24px;">
-                    <h3 style="color: var(--color-text-main); margin-bottom: 8px; font-size: 1.25rem;">2. Feasibility & Demo Impact (25%)</h3>
-                    <p>Can this project be built in the given timeframe? Does it solve a real pain point, and is the solution demo-ready? Our engine evaluates this through standard complexity vs. feasibility algorithms.</p>
-                </div>
-                <div style="margin-bottom: 24px;">
-                    <h3 style="color: var(--color-text-main); margin-bottom: 8px; font-size: 1.25rem;">3. Innovation & Originality (25%)</h3>
-                    <p>Originality of the concept, novelty of the GenAI integrations, and creative problem-solving approach. Avoid carbon-copy ideas and focus on unique angles.</p>
-                </div>
-                <div style="margin-bottom: 24px;">
-                    <h3 style="color: var(--color-text-main); margin-bottom: 8px; font-size: 1.25rem;">4. Design & User Experience (20%)</h3>
-                    <p>Clean visual interface, responsive layout, clear user flows, and general aesthetic appeal. A polished design greatly increases user engagement and judge favorability.</p>
+            <div class="modal-body">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3><span class="num">01.</span> Execution <span class="weight-badge">30%</span></h3>
+                        <p>Judges evaluate the depth of technical execution, correct choice of tools, architecture cleanliness, and how much functional code was actually built. Strive for a robust integration over simple mockups.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3><span class="num">02.</span> Demo Impact <span class="weight-badge">25%</span></h3>
+                        <p>Can this project be built in the given timeframe? Does it solve a real pain point, and is the solution demo-ready? Our engine evaluates this through standard complexity vs. feasibility algorithms.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3><span class="num">03.</span> Innovation <span class="weight-badge">25%</span></h3>
+                        <p>Originality of the concept, novelty of the GenAI integrations, and creative problem-solving approach. Avoid carbon-copy ideas and focus on unique angles.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3><span class="num">04.</span> Design & UX <span class="weight-badge">20%</span></h3>
+                        <p>Clean visual interface, responsive layout, clear user flows, and general aesthetic appeal. A polished design greatly increases user engagement and judge favorability.</p>
+                    </div>
                 </div>
             </div>
         </div>
