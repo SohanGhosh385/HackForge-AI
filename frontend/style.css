@@ -2916,7 +2916,7 @@ select:focus {
 .info-card h3 {
     font-family: 'Space Grotesk', system-ui, sans-serif;
     color: var(--color-text-main);
-    font-size: 1.25rem;
+    font-size: 1.35rem;
     font-weight: 700;
     margin-bottom: 12px;
     display: flex;
@@ -2944,8 +2944,8 @@ select:focus {
 
 .info-card p {
     color: var(--color-text-muted);
-    font-size: 1rem;
-    line-height: 1.65;
+    font-size: 1.1rem;
+    line-height: 1.7;
     margin: 0;
 }
 
@@ -2957,9 +2957,9 @@ select:focus {
 
 .info-card li {
     margin-bottom: 8px;
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     color: var(--color-text-muted);
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 .info-card li strong {
