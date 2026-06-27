@@ -2759,7 +2759,7 @@ select:focus {
 }
 
 .document-last-updated {
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     color: var(--color-accent);
     font-weight: 600;
     margin-bottom: 40px;
@@ -2769,17 +2769,17 @@ select:focus {
 
 .document-content {
     color: var(--color-text-muted);
-    font-size: 1.05rem;
-    line-height: 1.8;
+    font-size: 1.15rem;
+    line-height: 1.85;
 }
 
 .document-content h2 {
     font-family: 'Inter', sans-serif;
     color: var(--color-text-main);
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     font-weight: 700;
-    margin-top: 40px;
-    margin-bottom: 16px;
+    margin-top: 44px;
+    margin-bottom: 18px;
 }
 
 .document-content p {
@@ -2792,7 +2792,8 @@ select:focus {
 }
 
 .document-content li {
-    margin-bottom: 12px;
+    margin-bottom: 14px;
+    font-size: 1.12rem;
 }
 
 .document-content a {
