@@ -1,25 +1,44 @@
 import os
-import logging
+import time
+import json
 from dotenv import load_dotenv
 
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-
 load_dotenv()
-
 api_key = os.environ.get("GEMINI_API_KEY")
-print(f"API Key read: {api_key[:10] if api_key else 'None'}...")
-print(f"API Key starts with AIzaSy: {api_key.startswith('AIzaSy') if api_key else False}")
 
+from google import genai
+from google.genai import types
+
+client = genai.Client(api_key=api_key)
+
+# Define system instruction and user prompt
+system_instruction = (
+    "You are HackForge AI, a world-class hackathon mentor.\n\n"
+    "Generate EXACTLY 3 highly distinct hackathon project ideas based on inputs.\n"
+    "Return JSON only matching the schema: {\"ideas\": [{\"title\": \"\", \"description\": \"\", \"tech_stack\": [\"\", \"\", \"\", \"\"], \"roadmap\": [\"\", \"\", \"\"], \"complexity_score\": 5, \"impact_score\": 5}], \"best_idea_index\": 0, \"ranking_reason\": \"\"}\n"
+    "Keep descriptions under 30 words, tech_stack to exactly 4 items, and roadmaps to exactly 3 items."
+)
+user_prompt = "Generate ideas for Fintech & Banking domain, Intermediate level, 24 hours available."
+
+# Test 1: Without response_schema
+print("Test 1: Calling Gemini WITHOUT response_schema...")
+start_time = time.time()
+response1 = client.models.generate_content(
+    model='gemini-2.5-flash',
+    contents=user_prompt,
+    config=types.GenerateContentConfig(
+        system_instruction=system_instruction,
+        response_mime_type="application/json",
+        temperature=0.3,
+    ),
+)
+duration1 = time.time() - start_time
+print(f"Test 1 Duration: {duration1:.2f} seconds")
+print(f"Response 1 preview: {response1.text[:200]}...")
+
+# Try to parse
 try:
-    from google import genai
-    print("google-genai library imported successfully.")
-    client = genai.Client(api_key=api_key)
-    print("genai.Client initialized. Testing generate_content...")
-    response = client.models.generate_content(
-        model='gemini-2.5-flash',
-        contents="Hello, reply with one word: Success"
-    )
-    print(f"Response text: {response.text}")
+    parsed1 = json.loads(response1.text)
+    print("Test 1 parsed successfully.")
 except Exception as e:
-    print(f"Error occurred: {str(e)}")
+    print(f"Test 1 parse failed: {e}")

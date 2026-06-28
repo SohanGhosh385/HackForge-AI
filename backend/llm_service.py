@@ -18,6 +18,47 @@ except Exception:
 
 load_dotenv()
 
+import threading
+
+CACHE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ideas_cache.json")
+cache_lock = threading.Lock()
+_ideas_cache = {}
+
+def load_cache():
+    global _ideas_cache
+    if os.path.exists(CACHE_FILE):
+        try:
+            with open(CACHE_FILE, "r", encoding="utf-8") as f:
+                _ideas_cache = json.load(f)
+                logger.info(f"Loaded {len(_ideas_cache)} cached queries from ideas_cache.json")
+        except Exception as e:
+            logger.error(f"Failed to load cache: {e}")
+            _ideas_cache = {}
+    else:
+        _ideas_cache = {}
+
+def save_cache():
+    try:
+        with open(CACHE_FILE, "w", encoding="utf-8") as f:
+            json.dump(_ideas_cache, f, indent=2, ensure_ascii=False)
+    except Exception as e:
+        logger.error(f"Failed to save cache: {e}")
+
+load_cache()
+
+_client = None
+_client_lock = threading.Lock()
+
+def get_genai_client(api_key: str):
+    global _client
+    if _client is None:
+        with _client_lock:
+            if _client is None:
+                from google import genai
+                logger.info("Initializing global Google GenAI client instance for connection pooling...")
+                _client = genai.Client(api_key=api_key)
+    return _client
+
 # Upgraded Pydantic schemas for Hackathon Judge Mode
 class IdeaItem(BaseModel):
     title: str = Field(description="Innovative and catchy title of the hackathon project idea")
@@ -435,6 +476,16 @@ def generate_ideas(domain: str, skill_level: str, time_available: int) -> Dict[s
     Calls the Gemini API using structured JSON mode to generate 3 diverse, ranked hackathon ideas.
     If the API key is missing or invalid, falls back to realistic mock ideas.
     """
+    # Normalize inputs for cache key
+    norm_domain = "".join(c for c in domain.lower() if c.isalnum() or c.isspace()).strip()
+    cache_key = f"{norm_domain}_{skill_level.lower()}_{time_available}"
+    
+    # Check cache first
+    with cache_lock:
+        if cache_key in _ideas_cache:
+            logger.info(f"CACHE HIT: Returning cached ideas for key '{cache_key}' instantly.")
+            return _ideas_cache[cache_key]
+
     api_key = os.environ.get("GEMINI_API_KEY")
     
     # Check if API key is present and not the default example placeholder
@@ -443,11 +494,9 @@ def generate_ideas(domain: str, skill_level: str, time_available: int) -> Dict[s
         return get_mock_ideas(domain, skill_level, time_available)
         
     try:
-        from google import genai
         from google.genai import types
         
-        logger.info("Initializing Google GenAI client...")
-        client = genai.Client(api_key=api_key)
+        client = get_genai_client(api_key)
         
         system_instruction = (
             "You are HackForge AI, a world-class hackathon mentor, startup incubator judge, and senior AI systems designer.\n\n"
@@ -527,6 +576,13 @@ def generate_ideas(domain: str, skill_level: str, time_available: int) -> Dict[s
         if response.text:
             parsed_data = json.loads(response.text)
             logger.info("Successfully received structured response from Gemini.")
+            
+            # Save to cache
+            with cache_lock:
+                _ideas_cache[cache_key] = parsed_data
+                save_cache()
+                logger.info(f"CACHE SAVED: Saved ideas under key '{cache_key}' to cache file.")
+                
             return parsed_data
         else:
             raise ValueError("Empty response text from LLM.")

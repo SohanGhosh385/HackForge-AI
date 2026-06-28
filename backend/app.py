@@ -44,6 +44,22 @@ def health_check():
     """
     return {"status": "ok"}
 
+@app.post("/mock-ideas", response_model=HackathonIdeasResponse)
+def get_mock_ideas_endpoint(request: IdeaRequest):
+    """
+    Returns mock ideas instantly (under 5 milliseconds) to allow the frontend to render ideas instantly.
+    """
+    try:
+        from llm_service import get_mock_ideas
+        mock_response = get_mock_ideas(
+            domain=request.domain,
+            skill_level=request.skill_level,
+            time_available=request.time_available
+        )
+        return mock_response
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to get mock ideas: {str(e)}")
+
 @app.post("/generate-ideas", response_model=HackathonIdeasResponse)
 def generate_hackathon_ideas(request: IdeaRequest):
     """

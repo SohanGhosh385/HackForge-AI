@@ -28,6 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalImpactBar = document.getElementById('modal-impact-bar');
 
     const API_URL = 'http://127.0.0.1:8000/generate-ideas';
+    const MOCK_API_URL = 'http://127.0.0.1:8000/mock-ideas';
+    let currentRequestSession = 0;
 
     // Global state to store last generated ideas for modal lookup
     let generatedIdeasCache = [];
@@ -161,6 +163,10 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
+        // Increment session ID to identify the latest request
+        currentRequestSession++;
+        const currentSession = currentRequestSession;
+
         // 1. Reset state
         errorBox.classList.add('hidden');
         resultsSection.classList.add('hidden');
@@ -182,9 +188,17 @@ document.addEventListener('DOMContentLoaded', () => {
             time_available: timeAvailableVal
         };
 
+        // Hide status badge initially
+        const statusBadge = document.getElementById('ai-status');
+        const statusText = document.getElementById('ai-status-text');
+        if (statusBadge) {
+            statusBadge.style.display = 'none';
+            statusBadge.classList.remove('live');
+        }
+
         try {
-            // 3. Post to API
-            const response = await fetch(API_URL, {
+            // 3. Post to Mock API (Instant return < 10ms)
+            const mockResponse = await fetch(MOCK_API_URL, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -192,27 +206,82 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify(payload)
             });
 
-            if (!response.ok) {
-                const errorData = await response.json().catch(() => ({}));
-                const detailedError = errorData.detail && typeof errorData.detail === 'object'
-                    ? errorData.detail.map(err => `${err.loc.join('.')}: ${err.msg}`).join(', ')
-                    : errorData.detail || `Server returned code ${response.status}`;
-                throw new Error(detailedError);
+            if (currentSession !== currentRequestSession) return; // Discard stale session
+
+            if (!mockResponse.ok) {
+                const errorData = await mockResponse.json().catch(() => ({}));
+                throw new Error(errorData.detail || `Server returned code ${mockResponse.status}`);
             }
 
-            const data = await response.json();
+            const mockData = await mockResponse.json();
 
-            if (!data.ideas || !Array.isArray(data.ideas) || data.ideas.length === 0) {
-                throw new Error("Received empty or invalid data format from the generator API.");
+            // 4. Update local cache and Render mock results instantly
+            loader.classList.add('hidden');
+            generatedIdeasCache = mockData.ideas;
+            renderResults(mockData);
+
+            // Show results container immediately
+            resultsSection.classList.remove('hidden');
+            setTimeout(() => {
+                smoothScrollTo(resultsSection);
+            }, 50);
+
+            // Setup AI refining status badge
+            if (statusBadge) {
+                statusBadge.style.display = 'inline-flex';
+                statusBadge.classList.remove('live');
+                statusText.textContent = 'Gemini Refining...';
             }
 
-            // 4. Update local cache & Render results
-            loader.classList.add('hidden'); // Hide loader early to stabilize document height
-            generatedIdeasCache = data.ideas;
-            renderResults(data);
+            // 5. Fire background call for live/cached Gemini generation
+            fetch(API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(async (res) => {
+                if (currentSession !== currentRequestSession) return; // Discard stale session
+                if (!res.ok) {
+                    throw new Error(`Gemini API failed with status ${res.status}`);
+                }
+                const liveData = await res.json();
+                if (liveData && liveData.ideas && liveData.ideas.length > 0) {
+                    // Smoothly swap cards with live details
+                    const cardsGrid = document.getElementById('ideas-grid');
+                    if (cardsGrid) {
+                        cardsGrid.style.opacity = '0.3';
+                        cardsGrid.style.transition = 'opacity 0.25s ease';
+                    }
+
+                    setTimeout(() => {
+                        generatedIdeasCache = liveData.ideas;
+                        renderResults(liveData);
+
+                        if (cardsGrid) {
+                            cardsGrid.style.opacity = '1';
+                        }
+
+                        // Update badge to complete
+                        if (statusBadge) {
+                            statusBadge.classList.add('live');
+                            statusText.textContent = 'Gemini Optimized';
+                        }
+                    }, 250);
+                }
+            })
+            .catch((bgErr) => {
+                console.warn('Background live AI refinement failed/timed out:', bgErr);
+                if (currentSession === currentRequestSession && statusBadge) {
+                    // Update badge to indicate local fallback mode is active
+                    statusBadge.classList.add('live');
+                    statusText.textContent = 'AI Local Active';
+                }
+            });
 
         } catch (err) {
-            loader.classList.add('hidden'); // Hide loader early on error
+            loader.classList.add('hidden');
             console.error('Error generating ideas:', err);
             errorMessage.textContent = err.message || 'Unable to connect to the FastAPI backend. Check that your uvicorn server is running on http://127.0.0.1:8000';
             errorBox.classList.remove('hidden');
@@ -220,10 +289,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 smoothScrollTo(errorBox);
             }, 50);
         } finally {
-            // 5. Reset states
-            loader.classList.add('hidden');
-            submitBtn.disabled = false;
-            submitBtn.querySelector('.btn-text').textContent = 'Forge Ideas';
+            if (currentSession === currentRequestSession) {
+                loader.classList.add('hidden');
+                submitBtn.disabled = false;
+                submitBtn.querySelector('.btn-text').textContent = 'Forge Ideas';
+            }
         }
     });
 

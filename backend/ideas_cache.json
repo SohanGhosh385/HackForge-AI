@@ -1,0 +1,973 @@
+{
+  "fintech banking_intermediate_10": {
+    "ideas": [
+      {
+        "title": "PaySplit Lite API",
+        "description": "A lightweight bill splitting API that parses expenses and returns individual shares instantly using local memory storage.",
+        "tech_stack": [
+          "FastAPI",
+          "Python",
+          "Uvicorn",
+          "Swagger UI"
+        ],
+        "roadmap": [
+          "Construct expense share calculation rules",
+          "Build REST API endpoints for user groups",
+          "Deploy static interactive api docs"
+        ],
+        "complexity_score": 4,
+        "impact_score": 5
+      },
+      {
+        "title": "MicroPay QR Portal",
+        "description": "A frontend scanner mock displaying QR payment code validation pages for mobile banking simulations.",
+        "tech_stack": [
+          "HTML5 Canvas",
+          "CSS3",
+          "JavaScript",
+          "Local Storage"
+        ],
+        "roadmap": [
+          "Design mobile responsive payment views",
+          "Implement local client storage log updates",
+          "Embed dynamic QR code visual renderers"
+        ],
+        "complexity_score": 3,
+        "impact_score": 6
+      },
+      {
+        "title": "FraudHook Alert Monitor",
+        "description": "An automated monitoring server checking ledger logs and pushing terminal warning alarms.",
+        "tech_stack": [
+          "Python",
+          "FastAPI",
+          "Pydantic",
+          "Logging API"
+        ],
+        "roadmap": [
+          "Setup payload webhook validator models",
+          "Integrate logic triggers flagging exceptions",
+          "Expose active terminal monitoring feed"
+        ],
+        "complexity_score": 4,
+        "impact_score": 5
+      }
+    ],
+    "best_idea_index": 0,
+    "ranking_reason": "PaySplit Lite API offers the best feasibility for a 10-hour sprint while ensuring full functional code."
+  },
+  "fintech banking_intermediate_15": {
+    "ideas": [
+      {
+        "title": "FinScan Receipt Reader",
+        "description": "An AI utility parsing text segments from uploaded receipt images to record details automatically.",
+        "tech_stack": [
+          "FastAPI",
+          "Gemini API",
+          "Pillow (PIL)",
+          "SQLite"
+        ],
+        "roadmap": [
+          "Construct image upload API routes",
+          "Pipe picture files to Gemini OCR models",
+          "Save returned details to SQL database"
+        ],
+        "complexity_score": 5,
+        "impact_score": 7
+      },
+      {
+        "title": "WalletSync Portal",
+        "description": "A group budget web panel featuring collaborative accounts and progress graphs displaying monthly targets.",
+        "tech_stack": [
+          "FastAPI",
+          "Chart.js",
+          "React",
+          "CSS Grid"
+        ],
+        "roadmap": [
+          "Deploy relational user transaction tables",
+          "Build visual dynamic charts displaying balances",
+          "Setup CSS modern grid layout panel"
+        ],
+        "complexity_score": 5,
+        "impact_score": 6
+      },
+      {
+        "title": "RateAlert Dispatcher",
+        "description": "A scheduled monitoring task polling foreign rates and sending automated warnings on targets met.",
+        "tech_stack": [
+          "FastAPI",
+          "HTTPX",
+          "SMTP Library",
+          "APScheduler"
+        ],
+        "roadmap": [
+          "Setup hourly tasks requesting public exchange feeds",
+          "Verify target rate boundaries checks",
+          "Format and send email alert reports"
+        ],
+        "complexity_score": 4,
+        "impact_score": 6
+      }
+    ],
+    "best_idea_index": 0,
+    "ranking_reason": "FinScan Receipt Reader uses GenAI to solve a real bookkeeping pain point within the 15-hour time window."
+  },
+  "fintech banking_intermediate_24": {
+    "ideas": [
+      {
+        "title": "SettleSmart AI Optimizer",
+        "description": "An AI assistant parsing user expense categories and writing optimal monthly budget limits dynamically.",
+        "tech_stack": [
+          "FastAPI",
+          "Gemini API",
+          "Pandas",
+          "React"
+        ],
+        "roadmap": [
+          "Setup JSON endpoint to upload transaction items",
+          "Analyze history with Pandas and prompt Gemini",
+          "Render category recommendations inside dashboard"
+        ],
+        "complexity_score": 6,
+        "impact_score": 8
+      },
+      {
+        "title": "FundRooms Crowdfunder",
+        "description": "A group fundraising platform featuring distinct rooms and mock payment gateway confirmations.",
+        "tech_stack": [
+          "FastAPI",
+          "React",
+          "SQLite",
+          "Stripe API SDK"
+        ],
+        "roadmap": [
+          "Construct campaign databases and project tables",
+          "Integrate mock Stripe checkout portals",
+          "Configure room progress bar updates"
+        ],
+        "complexity_score": 6,
+        "impact_score": 7
+      },
+      {
+        "title": "AutoEscrow Timed Pipeline",
+        "description": "A background cron task verifying milestones before executing automated wallet transfers.",
+        "tech_stack": [
+          "FastAPI",
+          "APScheduler",
+          "SQLite",
+          "Python"
+        ],
+        "roadmap": [
+          "Build transfer state models and schemas",
+          "Deploy scheduler checking dates and releasing payments",
+          "Setup client confirmation route triggers"
+        ],
+        "complexity_score": 5,
+        "impact_score": 7
+      }
+    ],
+    "best_idea_index": 0,
+    "ranking_reason": "SettleSmart AI Optimizer utilizes structured Gemini models to build high-scoring mentor features in 24 hours."
+  },
+  "fintech banking_intermediate_36": {
+    "ideas": [
+      {
+        "title": "LoanRisk AI Evaluator",
+        "description": "An AI engine evaluating borrower risk scores and creating optimal micro-lending match profiles.",
+        "tech_stack": [
+          "FastAPI",
+          "Gemini API",
+          "React",
+          "Pandas"
+        ],
+        "roadmap": [
+          "Setup borrower metrics datasets and ingestion tables",
+          "Evaluate profiles via Gemini using risk scoring schemas",
+          "Build frontend matched lenders cards"
+        ],
+        "complexity_score": 7,
+        "impact_score": 8
+      },
+      {
+        "title": "AssetSync Dashboard",
+        "description": "A collaborative panel tracking user investments and syncing entries directly with mock ledger systems.",
+        "tech_stack": [
+          "FastAPI",
+          "Chart.js",
+          "React",
+          "PostgreSQL"
+        ],
+        "roadmap": [
+          "Design investment asset tables and structures",
+          "Configure Chart.js renderers showing histories",
+          "Expose secure ledger sync API endpoints"
+        ],
+        "complexity_score": 7,
+        "impact_score": 7
+      },
+      {
+        "title": "InvoiceFlow Pipeline",
+        "description": "An automated scanner verifying parsing details from CSV exports and formatting custom PDF bills.",
+        "tech_stack": [
+          "FastAPI",
+          "Pandas",
+          "ReportLab",
+          "Python"
+        ],
+        "roadmap": [
+          "Upload CSV containing sales and clients data",
+          "Process data tables with Pandas frames",
+          "Export custom formatted PDF invoice logs"
+        ],
+        "complexity_score": 6,
+        "impact_score": 7
+      }
+    ],
+    "best_idea_index": 0,
+    "ranking_reason": "LoanRisk AI Evaluator matches borrowers with smart risk categorizations, demonstrating high score depth in 36 hours."
+  },
+  "fintech banking_intermediate_48": {
+    "ideas": [
+      {
+        "title": "BudgetBuddy AI Assistant",
+        "description": "An AI financial assistant that parses statements from uploaded bank CSVs, categorizes transaction records, and builds saving summaries.",
+        "tech_stack": [
+          "FastAPI",
+          "Pandas",
+          "Gemini API",
+          "React"
+        ],
+        "roadmap": [
+          "Setup CSV upload endpoints",
+          "Parse data tables with Pandas and summarize profiles",
+          "Use LLM to categorize items and suggest budgeting plans"
+        ],
+        "complexity_score": 6,
+        "impact_score": 8
+      },
+      {
+        "title": "ShareSplit Collaborative Web",
+        "description": "A bill-splitting web platform with collaborative dashboard rooms and Stripe split payment links.",
+        "tech_stack": [
+          "FastAPI",
+          "Stripe API",
+          "PostgreSQL",
+          "Bootstrap"
+        ],
+        "roadmap": [
+          "Design group ledger and account tables",
+          "Configure Stripe custom payment link creation",
+          "Construct status dials showing balances owed"
+        ],
+        "complexity_score": 6,
+        "impact_score": 7
+      },
+      {
+        "title": "StripeAuto Escrow System",
+        "description": "A automated escrow validation worker ensuring payments release after verified timelines.",
+        "tech_stack": [
+          "FastAPI",
+          "APScheduler",
+          "SQLite",
+          "Python"
+        ],
+        "roadmap": [
+          "Design transaction state database models",
+          "Build scheduled checks processing pending releases",
+          "Expose user approval API portals"
+        ],
+        "complexity_score": 5,
+        "impact_score": 7
+      }
+    ],
+    "best_idea_index": 0,
+    "ranking_reason": "BudgetBuddy AI Assistant is selected because AI categorization of raw bank statements offers high demo value and utilizes modern GenAI hooks."
+  },
+  "fintech banking_intermediate_72": {
+    "ideas": [
+      {
+        "title": "WealthFlow Advisor Agent",
+        "description": "A multi-agent advisor managing portfolio targets and explaining market moves via conversational text streams.",
+        "tech_stack": [
+          "FastAPI",
+          "LangChain",
+          "Gemini API",
+          "Redis",
+          "WebSockets"
+        ],
+        "roadmap": [
+          "Setup WebSockets streaming current market tickers",
+          "Deploy LangChain agents evaluating asset shifts",
+          "Render dynamic advice dialogue boxes"
+        ],
+        "complexity_score": 8,
+        "impact_score": 9
+      },
+      {
+        "title": "CrowdForge P2P Lending Portal",
+        "description": "A peer-to-peer portal featuring risk matrices, investment splits, and lender return calculators.",
+        "tech_stack": [
+          "FastAPI",
+          "React",
+          "PostgreSQL",
+          "Tailwind CSS"
+        ],
+        "roadmap": [
+          "Configure complex user-role profiles database",
+          "Build interactive risk return graphs",
+          "Implement deposit ledger balance transactions"
+        ],
+        "complexity_score": 8,
+        "impact_score": 8
+      },
+      {
+        "title": "Arbitrage AutoBot Pipeline",
+        "description": "An automated pipeline tracking rates across decentralized exchange mock APIs and flagging profit loops.",
+        "tech_stack": [
+          "FastAPI",
+          "Celery",
+          "Redis",
+          "Docker"
+        ],
+        "roadmap": [
+          "Setup mock API trackers scanning pool rates",
+          "Deploy Celery workers evaluating margins",
+          "Trigger alarm signals when targets are crossed"
+        ],
+        "complexity_score": 8,
+        "impact_score": 8
+      }
+    ],
+    "best_idea_index": 0,
+    "ranking_reason": "WealthFlow Advisor Agent showcases conversational multi-agent design, proving extremely impressive for a 72-hour timeline."
+  },
+  "fintech_intermediate_10": {
+    "ideas": [
+      {
+        "title": "PaySplit Lite API",
+        "description": "A lightweight bill splitting API that parses expenses and returns individual shares instantly using local memory storage.",
+        "tech_stack": [
+          "FastAPI",
+          "Python",
+          "Uvicorn",
+          "Swagger UI"
+        ],
+        "roadmap": [
+          "Construct expense share calculation rules",
+          "Build REST API endpoints for user groups",
+          "Deploy static interactive api docs"
+        ],
+        "complexity_score": 4,
+        "impact_score": 5
+      },
+      {
+        "title": "MicroPay QR Portal",
+        "description": "A frontend scanner mock displaying QR payment code validation pages for mobile banking simulations.",
+        "tech_stack": [
+          "HTML5 Canvas",
+          "CSS3",
+          "JavaScript",
+          "Local Storage"
+        ],
+        "roadmap": [
+          "Design mobile responsive payment views",
+          "Implement local client storage log updates",
+          "Embed dynamic QR code visual renderers"
+        ],
+        "complexity_score": 3,
+        "impact_score": 6
+      },
+      {
+        "title": "FraudHook Alert Monitor",
+        "description": "An automated monitoring server checking ledger logs and pushing terminal warning alarms.",
+        "tech_stack": [
+          "Python",
+          "FastAPI",
+          "Pydantic",
+          "Logging API"
+        ],
+        "roadmap": [
+          "Setup payload webhook validator models",
+          "Integrate logic triggers flagging exceptions",
+          "Expose active terminal monitoring feed"
+        ],
+        "complexity_score": 4,
+        "impact_score": 5
+      }
+    ],
+    "best_idea_index": 0,
+    "ranking_reason": "PaySplit Lite API offers the best feasibility for a 10-hour sprint while ensuring full functional code."
+  },
+  "fintech_intermediate_15": {
+    "ideas": [
+      {
+        "title": "FinScan Receipt Reader",
+        "description": "An AI utility parsing text segments from uploaded receipt images to record details automatically.",
+        "tech_stack": [
+          "FastAPI",
+          "Gemini API",
+          "Pillow (PIL)",
+          "SQLite"
+        ],
+        "roadmap": [
+          "Construct image upload API routes",
+          "Pipe picture files to Gemini OCR models",
+          "Save returned details to SQL database"
+        ],
+        "complexity_score": 5,
+        "impact_score": 7
+      },
+      {
+        "title": "WalletSync Portal",
+        "description": "A group budget web panel featuring collaborative accounts and progress graphs displaying monthly targets.",
+        "tech_stack": [
+          "FastAPI",
+          "Chart.js",
+          "React",
+          "CSS Grid"
+        ],
+        "roadmap": [
+          "Deploy relational user transaction tables",
+          "Build visual dynamic charts displaying balances",
+          "Setup CSS modern grid layout panel"
+        ],
+        "complexity_score": 5,
+        "impact_score": 6
+      },
+      {
+        "title": "RateAlert Dispatcher",
+        "description": "A scheduled monitoring task polling foreign rates and sending automated warnings on targets met.",
+        "tech_stack": [
+          "FastAPI",
+          "HTTPX",
+          "SMTP Library",
+          "APScheduler"
+        ],
+        "roadmap": [
+          "Setup hourly tasks requesting public exchange feeds",
+          "Verify target rate boundaries checks",
+          "Format and send email alert reports"
+        ],
+        "complexity_score": 4,
+        "impact_score": 6
+      }
+    ],
+    "best_idea_index": 0,
+    "ranking_reason": "FinScan Receipt Reader uses GenAI to solve a real bookkeeping pain point within the 15-hour time window."
+  },
+  "fintech_intermediate_24": {
+    "ideas": [
+      {
+        "title": "SettleSmart AI Optimizer",
+        "description": "An AI assistant parsing user expense categories and writing optimal monthly budget limits dynamically.",
+        "tech_stack": [
+          "FastAPI",
+          "Gemini API",
+          "Pandas",
+          "React"
+        ],
+        "roadmap": [
+          "Setup JSON endpoint to upload transaction items",
+          "Analyze history with Pandas and prompt Gemini",
+          "Render category recommendations inside dashboard"
+        ],
+        "complexity_score": 6,
+        "impact_score": 8
+      },
+      {
+        "title": "FundRooms Crowdfunder",
+        "description": "A group fundraising platform featuring distinct rooms and mock payment gateway confirmations.",
+        "tech_stack": [
+          "FastAPI",
+          "React",
+          "SQLite",
+          "Stripe API SDK"
+        ],
+        "roadmap": [
+          "Construct campaign databases and project tables",
+          "Integrate mock Stripe checkout portals",
+          "Configure room progress bar updates"
+        ],
+        "complexity_score": 6,
+        "impact_score": 7
+      },
+      {
+        "title": "AutoEscrow Timed Pipeline",
+        "description": "A background cron task verifying milestones before executing automated wallet transfers.",
+        "tech_stack": [
+          "FastAPI",
+          "APScheduler",
+          "SQLite",
+          "Python"
+        ],
+        "roadmap": [
+          "Build transfer state models and schemas",
+          "Deploy scheduler checking dates and releasing payments",
+          "Setup client confirmation route triggers"
+        ],
+        "complexity_score": 5,
+        "impact_score": 7
+      }
+    ],
+    "best_idea_index": 0,
+    "ranking_reason": "SettleSmart AI Optimizer utilizes structured Gemini models to build high-scoring mentor features in 24 hours."
+  },
+  "fintech_intermediate_36": {
+    "ideas": [
+      {
+        "title": "LoanRisk AI Evaluator",
+        "description": "An AI engine evaluating borrower risk scores and creating optimal micro-lending match profiles.",
+        "tech_stack": [
+          "FastAPI",
+          "Gemini API",
+          "React",
+          "Pandas"
+        ],
+        "roadmap": [
+          "Setup borrower metrics datasets and ingestion tables",
+          "Evaluate profiles via Gemini using risk scoring schemas",
+          "Build frontend matched lenders cards"
+        ],
+        "complexity_score": 7,
+        "impact_score": 8
+      },
+      {
+        "title": "AssetSync Dashboard",
+        "description": "A collaborative panel tracking user investments and syncing entries directly with mock ledger systems.",
+        "tech_stack": [
+          "FastAPI",
+          "Chart.js",
+          "React",
+          "PostgreSQL"
+        ],
+        "roadmap": [
+          "Design investment asset tables and structures",
+          "Configure Chart.js renderers showing histories",
+          "Expose secure ledger sync API endpoints"
+        ],
+        "complexity_score": 7,
+        "impact_score": 7
+      },
+      {
+        "title": "InvoiceFlow Pipeline",
+        "description": "An automated scanner verifying parsing details from CSV exports and formatting custom PDF bills.",
+        "tech_stack": [
+          "FastAPI",
+          "Pandas",
+          "ReportLab",
+          "Python"
+        ],
+        "roadmap": [
+          "Upload CSV containing sales and clients data",
+          "Process data tables with Pandas frames",
+          "Export custom formatted PDF invoice logs"
+        ],
+        "complexity_score": 6,
+        "impact_score": 7
+      }
+    ],
+    "best_idea_index": 0,
+    "ranking_reason": "LoanRisk AI Evaluator matches borrowers with smart risk categorizations, demonstrating high score depth in 36 hours."
+  },
+  "fintech_intermediate_48": {
+    "ideas": [
+      {
+        "title": "BudgetBuddy AI Assistant",
+        "description": "An AI financial assistant that parses statements from uploaded bank CSVs, categorizes transaction records, and builds saving summaries.",
+        "tech_stack": [
+          "FastAPI",
+          "Pandas",
+          "Gemini API",
+          "React"
+        ],
+        "roadmap": [
+          "Setup CSV upload endpoints",
+          "Parse data tables with Pandas and summarize profiles",
+          "Use LLM to categorize items and suggest budgeting plans"
+        ],
+        "complexity_score": 6,
+        "impact_score": 8
+      },
+      {
+        "title": "ShareSplit Collaborative Web",
+        "description": "A bill-splitting web platform with collaborative dashboard rooms and Stripe split payment links.",
+        "tech_stack": [
+          "FastAPI",
+          "Stripe API",
+          "PostgreSQL",
+          "Bootstrap"
+        ],
+        "roadmap": [
+          "Design group ledger and account tables",
+          "Configure Stripe custom payment link creation",
+          "Construct status dials showing balances owed"
+        ],
+        "complexity_score": 6,
+        "impact_score": 7
+      },
+      {
+        "title": "StripeAuto Escrow System",
+        "description": "A automated escrow validation worker ensuring payments release after verified timelines.",
+        "tech_stack": [
+          "FastAPI",
+          "APScheduler",
+          "SQLite",
+          "Python"
+        ],
+        "roadmap": [
+          "Design transaction state database models",
+          "Build scheduled checks processing pending releases",
+          "Expose user approval API portals"
+        ],
+        "complexity_score": 5,
+        "impact_score": 7
+      }
+    ],
+    "best_idea_index": 0,
+    "ranking_reason": "BudgetBuddy AI Assistant is selected because AI categorization of raw bank statements offers high demo value and utilizes modern GenAI hooks."
+  },
+  "fintech_intermediate_72": {
+    "ideas": [
+      {
+        "title": "WealthFlow Advisor Agent",
+        "description": "A multi-agent advisor managing portfolio targets and explaining market moves via conversational text streams.",
+        "tech_stack": [
+          "FastAPI",
+          "LangChain",
+          "Gemini API",
+          "Redis",
+          "WebSockets"
+        ],
+        "roadmap": [
+          "Setup WebSockets streaming current market tickers",
+          "Deploy LangChain agents evaluating asset shifts",
+          "Render dynamic advice dialogue boxes"
+        ],
+        "complexity_score": 8,
+        "impact_score": 9
+      },
+      {
+        "title": "CrowdForge P2P Lending Portal",
+        "description": "A peer-to-peer portal featuring risk matrices, investment splits, and lender return calculators.",
+        "tech_stack": [
+          "FastAPI",
+          "React",
+          "PostgreSQL",
+          "Tailwind CSS"
+        ],
+        "roadmap": [
+          "Configure complex user-role profiles database",
+          "Build interactive risk return graphs",
+          "Implement deposit ledger balance transactions"
+        ],
+        "complexity_score": 8,
+        "impact_score": 8
+      },
+      {
+        "title": "Arbitrage AutoBot Pipeline",
+        "description": "An automated pipeline tracking rates across decentralized exchange mock APIs and flagging profit loops.",
+        "tech_stack": [
+          "FastAPI",
+          "Celery",
+          "Redis",
+          "Docker"
+        ],
+        "roadmap": [
+          "Setup mock API trackers scanning pool rates",
+          "Deploy Celery workers evaluating margins",
+          "Trigger alarm signals when targets are crossed"
+        ],
+        "complexity_score": 8,
+        "impact_score": 8
+      }
+    ],
+    "best_idea_index": 0,
+    "ranking_reason": "WealthFlow Advisor Agent showcases conversational multi-agent design, proving extremely impressive for a 72-hour timeline."
+  },
+  "fintech  banking_intermediate_10": {
+    "ideas": [
+      {
+        "title": "FinSense AI Advisor",
+        "description": "An AI-powered chatbot offering personalized financial advice and budget optimization. It analyzes user spending patterns to suggest smart savings strategies.",
+        "tech_stack": [
+          "Python (Flask)",
+          "OpenAI API",
+          "React.js",
+          "SQLite"
+        ],
+        "roadmap": [
+          "Integrate OpenAI API for conversational AI backend.",
+          "Develop React frontend for chat interface and user input.",
+          "Implement basic user profile and spending data storage."
+        ],
+        "complexity_score": 6,
+        "impact_score": 8
+      },
+      {
+        "title": "Multi-Asset Portfolio Dashboard",
+        "description": "A web platform for users to manually track and visualize their diverse investment assets. It provides a consolidated view of holdings across various platforms.",
+        "tech_stack": [
+          "Node.js (Express)",
+          "React.js",
+          "PostgreSQL",
+          "Chart.js"
+        ],
+        "roadmap": [
+          "Set up user authentication and database for asset tracking.",
+          "Build API endpoints for adding/retrieving investment data.",
+          "Develop a dashboard UI with data visualization."
+        ],
+        "complexity_score": 5,
+        "impact_score": 7
+      },
+      {
+        "title": "Auto-Categorize Transactions",
+        "description": "An automation tool that processes uploaded bank statements (CSV) to intelligently categorize transactions. It streamlines expense tracking for budgeting and tax preparation.",
+        "tech_stack": [
+          "Python (Pandas)",
+          "Flask",
+          "HTML/CSS/JS",
+          "CSV Parser"
+        ],
+        "roadmap": [
+          "Implement CSV upload and parsing logic with Pandas.",
+          "Develop rule-based categorization engine for transactions.",
+          "Create a simple web interface to display categorized data."
+        ],
+        "complexity_score": 5,
+        "impact_score": 8
+      }
+    ],
+    "best_idea_index": 0,
+    "ranking_reason": "The AI advisor offers high innovation and a strong demo potential for a hackathon, combining AI with practical finance."
+  },
+  "fintech  banking_intermediate_24": {
+    "ideas": [
+      {
+        "title": "AI Spending Insight Advisor",
+        "description": "Analyzes user transaction data to offer personalized spending insights and budget recommendations. Identifies wasteful spending patterns and suggests actionable savings strategies.",
+        "tech_stack": [
+          "Python (FastAPI)",
+          "Pandas",
+          "OpenAI API",
+          "React"
+        ],
+        "roadmap": [
+          "Develop backend API for transaction data ingestion and processing.",
+          "Integrate OpenAI API for generating personalized spending advice.",
+          "Build a simple frontend to display insights and recommendations."
+        ],
+        "complexity_score": 6,
+        "impact_score": 8
+      },
+      {
+        "title": "Thematic Micro-Investment Simulator",
+        "description": "A web platform enabling users to build and simulate micro-investment portfolios based on themes (e.g., green tech, AI). Connects to mock APIs for simulated returns and portfolio tracking.",
+        "tech_stack": [
+          "Node.js (Express)",
+          "React",
+          "Chart.js",
+          "Mock Investment API"
+        ],
+        "roadmap": [
+          "Set up backend for portfolio creation and mock API integration.",
+          "Develop frontend for theme selection and portfolio visualization.",
+          "Implement simulated performance tracking and charting."
+        ],
+        "complexity_score": 7,
+        "impact_score": 7
+      },
+      {
+        "title": "Automated Subscription Saver",
+        "description": "Scans bank statements for recurring subscriptions and categorizes them. Provides automated alerts and generates negotiation scripts to potentially reduce monthly costs.",
+        "tech_stack": [
+          "Python (Flask)",
+          "BeautifulSoup",
+          "SQLite",
+          "Cron/Scheduler"
+        ],
+        "roadmap": [
+          "Develop script to parse mock bank statements for subscriptions.",
+          "Create a Flask API to display identified subscriptions and alerts.",
+          "Implement basic logic for generating negotiation script templates."
+        ],
+        "complexity_score": 6,
+        "impact_score": 9
+      }
+    ],
+    "best_idea_index": 2,
+    "ranking_reason": "It offers immediate, tangible value by directly helping users save money through automated subscription management and negotiation."
+  },
+  "fintech  banking_intermediate_72": {
+    "ideas": [
+      {
+        "title": "FinSense AI: Personalized Spending Insights",
+        "description": "Analyzes user spending patterns from mock transaction data using AI. Provides personalized insights, budget recommendations, and identifies potential savings opportunities.",
+        "tech_stack": [
+          "Python (FastAPI)",
+          "OpenAI API",
+          "React.js",
+          "PostgreSQL"
+        ],
+        "roadmap": [
+          "Set up backend with mock data API and LLM integration.",
+          "Develop frontend for data input, visualization, and insight display.",
+          "Implement core AI analysis and personalized recommendation logic."
+        ],
+        "complexity_score": 7,
+        "impact_score": 8
+      },
+      {
+        "title": "CircleLend: Community Micro-Finance Platform",
+        "description": "A web platform enabling users to create and manage peer-to-peer micro-lending or group savings circles. Facilitates transparent tracking of contributions and repayments among trusted members.",
+        "tech_stack": [
+          "Node.js (Express)",
+          "Vue.js",
+          "MongoDB",
+          "JWT Authentication"
+        ],
+        "roadmap": [
+          "Design database schema and build user authentication system.",
+          "Implement core logic for circle creation, joining, and transaction recording.",
+          "Develop frontend for circle management, user dashboards, and transaction history."
+        ],
+        "complexity_score": 6,
+        "impact_score": 7
+      },
+      {
+        "title": "ReguScan: Automated Compliance Auditor",
+        "description": "An automation tool that scans financial text documents (simulated input) against predefined regulatory keywords and rules. Identifies potential compliance risks and flags discrepancies for review.",
+        "tech_stack": [
+          "Python (Flask)",
+          "spaCy",
+          "Docker",
+          "Simple HTML/CSS/JS"
+        ],
+        "roadmap": [
+          "Develop text processing and rule-matching engine for compliance checks.",
+          "Build a simple web interface for document input and flagged output display.",
+          "Containerize the application using Docker for easy deployment and testing."
+        ],
+        "complexity_score": 6,
+        "impact_score": 7
+      }
+    ],
+    "best_idea_index": 0,
+    "ranking_reason": "Leverages AI for personalized financial insights, offering a high-impact, user-centric solution with strong demo potential."
+  },
+  "fintech  banking_advanced_72": {
+    "ideas": [
+      {
+        "title": "CogniGuard: Real-time Explainable Financial Anomaly Detection",
+        "description": "Detects sophisticated financial fraud and anomalies in real-time using behavioral AI. Provides explainable insights into suspicious transaction patterns and user activities.",
+        "tech_stack": [
+          "Apache Flink",
+          "TensorFlow/PyTorch",
+          "FastAPI",
+          "Kafka"
+        ],
+        "roadmap": [
+          "Set up real-time data ingestion pipeline.",
+          "Develop and train anomaly detection models.",
+          "Build API for explainable insights and alerts."
+        ],
+        "complexity_score": 9,
+        "impact_score": 9
+      },
+      {
+        "title": "Cross-Chain DeFi Portfolio Optimizer",
+        "description": "A sophisticated web platform for managing and optimizing multi-chain DeFi portfolios. Aggregates assets, analyzes yield opportunities, and models risk across various protocols.",
+        "tech_stack": [
+          "Next.js",
+          "Ethers.js/Web3.js",
+          "GraphQL",
+          "PostgreSQL"
+        ],
+        "roadmap": [
+          "Implement multi-chain data aggregation.",
+          "Develop portfolio optimization algorithms.",
+          "Build interactive dashboard with risk metrics."
+        ],
+        "complexity_score": 8,
+        "impact_score": 8
+      },
+      {
+        "title": "RegFlow: Dynamic Policy-as-Code Compliance Engine",
+        "description": "Automates regulatory compliance by dynamically interpreting policy documents and monitoring financial operations. Generates real-time alerts and audit-ready reports based on evolving regulations.",
+        "tech_stack": [
+          "Kubernetes",
+          "Python (SpaCy/NLTK)",
+          "Apache Kafka",
+          "OpenPolicyAgent"
+        ],
+        "roadmap": [
+          "Design microservices architecture and event bus.",
+          "Implement NLP for regulatory text ingestion.",
+          "Develop policy evaluation and reporting module."
+        ],
+        "complexity_score": 9,
+        "impact_score": 9
+      }
+    ],
+    "best_idea_index": 2,
+    "ranking_reason": "It tackles a critical, complex regulatory challenge with an innovative, scalable policy-as-code and NLP-driven automation approach."
+  },
+  "fintech  banking_intermediate_15": {
+    "ideas": [
+      {
+        "title": "FinSense AI Chatbot",
+        "description": "An AI chatbot that simplifies complex financial jargon and provides personalized spending insights. It helps users understand their finances better and make informed decisions.",
+        "tech_stack": [
+          "React",
+          "Flask",
+          "OpenAI API",
+          "PostgreSQL"
+        ],
+        "roadmap": [
+          "Set up chat UI and Flask backend.",
+          "Integrate OpenAI API for financial explanations.",
+          "Implement basic spending analysis based on user input."
+        ],
+        "complexity_score": 6,
+        "impact_score": 7
+      },
+      {
+        "title": "Subscription Tracker Pro",
+        "description": "A web platform for individuals and small businesses to track and manage all recurring subscriptions. Visualize spending patterns and receive upcoming payment alerts to avoid overdrafts.",
+        "tech_stack": [
+          "Node.js (Express)",
+          "React",
+          "PostgreSQL",
+          "Chart.js"
+        ],
+        "roadmap": [
+          "Build user authentication and subscription data model.",
+          "Develop frontend for adding/viewing subscriptions.",
+          "Implement payment alerts and basic spending charts."
+        ],
+        "complexity_score": 5,
+        "impact_score": 7
+      },
+      {
+        "title": "AutoBudget Categorizer",
+        "description": "An automation tool that intelligently categorizes bank transactions from CSV/OFX files. It applies user-defined rules and learns patterns to streamline budgeting and expense tracking.",
+        "tech_stack": [
+          "Python (Pandas)",
+          "Flask",
+          "SQLite",
+          "OFX/CSV Parser"
+        ],
+        "roadmap": [
+          "Develop CSV/OFX parsing and data loading.",
+          "Implement rule-based categorization engine.",
+          "Build a simple web interface to upload files and view categorized data."
+        ],
+        "complexity_score": 6,
+        "impact_score": 8
+      }
+    ],
+    "best_idea_index": 2,
+    "ranking_reason": "It solves a common, tedious financial task with direct, tangible automation, offering high immediate utility and a clear demo."
+  }
+}
