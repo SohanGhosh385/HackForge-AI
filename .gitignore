@@ -1,0 +1,30 @@
+# Environment variables (contains sensitive API keys)
+.env
+backend/.env
+
+# Python caching
+__pycache__/
+backend/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Python virtual environment
+backend/venv/
+venv/
+.venv/
+
+# IDE / Editor folders
+.vscode/
+.idea/
+.gemini/
+antigravity-ide/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
