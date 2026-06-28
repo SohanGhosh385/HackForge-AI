@@ -6,24 +6,31 @@ from pydantic import BaseModel, Field
 from dotenv import load_dotenv
 
 # Setup logger
-logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+try:
+    log_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "app.log")
+    file_handler = logging.FileHandler(log_file_path, mode="a", encoding="utf-8")
+    file_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+    logger.addHandler(file_handler)
+except Exception:
+    pass
 
 load_dotenv()
 
 # Upgraded Pydantic schemas for Hackathon Judge Mode
 class IdeaItem(BaseModel):
     title: str = Field(description="Innovative and catchy title of the hackathon project idea")
-    description: str = Field(description="Clear explanation of the problem solved, core functionality, and value proposition")
-    tech_stack: List[str] = Field(description="A tailored list of technologies, frameworks, libraries, and APIs suitable for the skill level")
-    roadmap: List[str] = Field(description="Milestones representing a step-by-step roadmap to complete the demo during the hackathon timeline")
+    description: str = Field(description="A concise 2-sentence description of the problem solved and core functionality (maximum 35 words)")
+    tech_stack: List[str] = Field(description="Tailored list of exactly 4 key technologies/frameworks/libraries suitable for the skill level")
+    roadmap: List[str] = Field(description="Exactly 3 key milestones representing the step-by-step roadmap to build the demo during the hackathon")
     complexity_score: int = Field(description="Realistic difficulty score from 1 (very basic) to 10 (exceptionally complex)", ge=1, le=10)
     impact_score: int = Field(description="Realistic score evaluating market demand, real-world utility, and demo wow-factor from 1 to 10", ge=1, le=10)
 
 class HackathonIdeasResponse(BaseModel):
     ideas: List[IdeaItem] = Field(description="Exactly 3 diverse project ideas: Idea 1 is AI-centric, Idea 2 is Web/App Platform, Idea 3 is Automation/System tool")
     best_idea_index: int = Field(description="The index (0, 1, or 2) of the most recommended idea in the list", ge=0, le=2)
-    ranking_reason: str = Field(description="A brief explanation details why this specific idea ranks best, considering timeline feasibility and hackathon judge impact")
+    ranking_reason: str = Field(description="A brief 1-sentence explanation of why this specific idea ranks best (maximum 20 words)")
 
 def get_mock_ideas(domain: str, skill_level: str, time_available: int) -> Dict[str, Any]:
     """
@@ -485,7 +492,8 @@ def generate_ideas(domain: str, skill_level: str, time_available: int) -> Dict[s
             "- Avoid generic ideas (e.g., to-do apps, basic chatbots)\n"
             "- Ensure ideas are realistic for hackathons\n"
             "- Optimize for feasibility + innovation balance\n"
-            "- Respect time_available strictly\n\n"
+            "- Respect time_available strictly\n"
+            "- Keep all descriptions and text fields extremely concise. Make project descriptions under 35 words. Tech stacks must contain exactly 4 items, and roadmaps must contain exactly 3 items.\n\n"
             "---\n\n"
             "# 🏆 HACKATHON JUDGE MODE\n\n"
             "Act like a strict hackathon judge.\n\n"
@@ -511,7 +519,7 @@ def generate_ideas(domain: str, skill_level: str, time_available: int) -> Dict[s
                 system_instruction=system_instruction,
                 response_mime_type="application/json",
                 response_schema=HackathonIdeasResponse,
-                temperature=0.7,
+                temperature=0.3,
             ),
         )
         

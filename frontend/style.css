@@ -1418,7 +1418,7 @@ select:focus {
 
 .tech-list {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     gap: 8px;
     margin-bottom: 24px;
     justify-content: center;

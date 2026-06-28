@@ -1,0 +1,40 @@
+2026-06-28 22:13:27,003 - llm_service - ERROR - Error calling Gemini API: cannot import name 'genai' from 'google' (unknown location). Falling back to mock generator.
+2026-06-28 22:13:27,004 - llm_service - INFO - Using mock fallback generator for domain: Fintech & Banking, skill: Intermediate, time: 10h
+2026-06-28 22:13:29,843 - llm_service - ERROR - Error calling Gemini API: cannot import name 'genai' from 'google' (unknown location). Falling back to mock generator.
+2026-06-28 22:13:29,843 - llm_service - INFO - Using mock fallback generator for domain: Fintech & Banking, skill: Intermediate, time: 15h
+2026-06-28 22:13:32,147 - llm_service - ERROR - Error calling Gemini API: cannot import name 'genai' from 'google' (unknown location). Falling back to mock generator.
+2026-06-28 22:13:32,148 - llm_service - INFO - Using mock fallback generator for domain: Fintech & Banking, skill: Intermediate, time: 24h
+2026-06-28 22:16:54,838 - llm_service - INFO - Initializing Google GenAI client...
+2026-06-28 22:16:57,029 - llm_service - INFO - Sending request to gemini-2.5-flash for domain: Fintech & Banking
+2026-06-28 22:17:16,600 - llm_service - INFO - Successfully received structured response from Gemini.
+2026-06-28 22:17:28,462 - llm_service - INFO - Initializing Google GenAI client...
+2026-06-28 22:17:30,179 - llm_service - INFO - Sending request to gemini-2.5-flash for domain: Fintech & Banking
+2026-06-28 22:17:45,552 - llm_service - INFO - Successfully received structured response from Gemini.
+2026-06-28 22:17:52,083 - llm_service - INFO - Initializing Google GenAI client...
+2026-06-28 22:17:53,713 - llm_service - INFO - Sending request to gemini-2.5-flash for domain: Fintech & Banking
+2026-06-28 22:18:12,091 - llm_service - INFO - Successfully received structured response from Gemini.
+2026-06-28 22:19:32,403 - llm_service - ERROR - Error calling Gemini API: cannot import name 'genai' from 'google' (unknown location). Falling back to mock generator.
+2026-06-28 22:19:32,403 - llm_service - INFO - Using mock fallback generator for domain: Fintech & Banking, skill: Intermediate, time: 48h
+2026-06-28 22:19:34,858 - llm_service - ERROR - Error calling Gemini API: cannot import name 'genai' from 'google' (unknown location). Falling back to mock generator.
+2026-06-28 22:19:34,859 - llm_service - INFO - Using mock fallback generator for domain: Fintech & Banking, skill: Intermediate, time: 24h
+2026-06-28 22:19:37,760 - llm_service - ERROR - Error calling Gemini API: cannot import name 'genai' from 'google' (unknown location). Falling back to mock generator.
+2026-06-28 22:19:37,760 - llm_service - INFO - Using mock fallback generator for domain: Fintech & Banking, skill: Intermediate, time: 24h
+2026-06-28 22:22:39,465 - llm_service - ERROR - Error calling Gemini API: cannot import name 'genai' from 'google' (unknown location). Falling back to mock generator.
+2026-06-28 22:22:39,467 - llm_service - INFO - Using mock fallback generator for domain: Fintech & Banking, skill: Intermediate, time: 10h
+2026-06-28 22:23:15,350 - llm_service - INFO - Initializing Google GenAI client...
+2026-06-28 22:23:17,348 - llm_service - INFO - Sending request to gemini-2.5-flash for domain: Fintech & Banking
+2026-06-28 22:23:33,292 - llm_service - INFO - Successfully received structured response from Gemini.
+2026-06-28 22:24:08,615 - llm_service - INFO - Initializing Google GenAI client...
+2026-06-28 22:24:10,279 - llm_service - INFO - Sending request to gemini-2.5-flash for domain: Fintech & Banking
+2026-06-28 22:24:26,788 - llm_service - INFO - Successfully received structured response from Gemini.
+2026-06-28 22:24:47,746 - llm_service - INFO - Initializing Google GenAI client...
+2026-06-28 22:24:49,613 - llm_service - INFO - Sending request to gemini-2.5-flash for domain: Fintech & Banking
+2026-06-28 22:25:05,454 - llm_service - INFO - Successfully received structured response from Gemini.
+2026-06-28 22:26:11,998 - llm_service - INFO - Initializing Google GenAI client...
+2026-06-28 22:26:14,157 - llm_service - INFO - Sending request to gemini-2.5-flash for domain: Fintech & Banking
+2026-06-28 22:26:31,920 - llm_service - INFO - Successfully received structured response from Gemini.
+2026-06-28 22:27:45,990 - llm_service - INFO - Initializing Google GenAI client...
+2026-06-28 22:27:47,708 - llm_service - INFO - Sending request to gemini-2.5-flash for domain: Fintech & Banking
+2026-06-28 22:28:04,851 - llm_service - INFO - Successfully received structured response from Gemini.
+2026-06-28 22:28:31,423 - llm_service - INFO - Initializing Google GenAI client...
+2026-06-28 22:28:33,329 - llm_service - INFO - Sending request to gemini-2.5-flash for domain: Fintech & Banking
